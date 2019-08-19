@@ -214,7 +214,7 @@ class Ken {
             if( empty($this->reqAction) || 
                 empty($this->reqController)|| 
                 empty($this->payload)){
-                echo Response::err("Bad post request. Either the controller action or payload was not sent.");
+                echo json_encode(Response::err("Bad post request. Either the controller action or payload was not sent."));
                 return; 
                 exit;
             }
