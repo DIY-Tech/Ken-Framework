@@ -55,4 +55,41 @@ class AccountModel {
             ['fetchConstant' => 'fetchAll']
         );
     }
+    public static function getOne($filtLoad) {
+        return Dispatcher::dispatch(
+            "SELECT
+            accountEmail, accountType, accountCreated, accountDiscount, accountId
+            From account
+            WHERE accountId = :accountId",
+            $filtLoad,
+            ['fetchConstant' => 'fetch']
+        );
+    }
+
+    public static function update($filtLoad) {
+        $dynamicField = "";
+        if(isset($filtLoad['accountEmail'])) {
+            $dynamicField .= "accountEmail = :accountEmail,";
+        }
+
+        if(isset($filtLoad['accountPasswordHash'])) {
+            $dynamicField .= "accountPassword = :accountPasswordHash,";
+        }
+
+        if(isset($filtLoad['accountDiscount'])) {
+            $dynamicField .= "accountDiscount = :accountDiscount";
+        }
+
+        // This piece of code is needed to remove any 
+        // end of line comments that might be their
+        // due to the nature of optional parameters
+        $dynamicField = rtrim($dynamicField, ",");
+
+        return Dispatcher::dispatch(
+            "UPDATE account
+            SET $dynamicField
+            WHERE accountId = :accountId",
+            $filtLoad
+        );
+    }
 }

@@ -97,3 +97,23 @@ $Account->addAction('getAll', function($payload) {
     return Response::data(AccountModel::getAll($filtLoad), "All Accounts were retrieved");
   }
 }, TRUE);
+
+$Account->addAction('getOne', function($payload) {
+  $filtLoad = Controller::filterPayload($payload);
+  Controller::required(['accountType', 'accountId'], $filtLoad);
+  if($filtLoad['accountType'] !== 'admin') {
+    return Response::err("The request wasn't made with an administrative account");
+  } else {
+    return Response::data(AccountModel::getOne($filtLoad), "All Accounts were retrieved");
+  }
+}, True);
+
+$Account->addAction('update', function($payload) {
+  $filtLoad = Controller::filterPayload($payload);
+  Controller::required(['accountId'], $filtLoad);
+  if(AccountModel::update($filtLoad) == 1) {
+    return Response::success("Account Updated Successfully");
+  } else {
+    return Response::err("error deleting account");
+  }
+}, TRUE);
