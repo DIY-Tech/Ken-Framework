@@ -6,23 +6,27 @@
  * This outlines the general structure of the
  * server file.
  */
-
-require_once $_SERVER['DOCUMENT_ROOT'] . '/src/include.php';
+echo("<h1>Server Running</h1>");
+// require_once $_SERVER['DOCUMENT_ROOT'] . '/src/include.php';
 
 // CSRF (cross-site request forgery) vulnerability
 // due to serving spa's on seprate local server for 
 // development. Remove headers before launching 
 // product
 
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS");
+// header("Access-Control-Allow-Origin: *");
+// header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+// header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS");
 
 // Instantiate app
-$app = new Ken(['tokenValidation' => TRUE, 'actionExemptions' => ['createAccount']]);
+// $app = new Ken(['tokenValidation' => TRUE, 'actionExemptions' => ['createAccount']]);
 
 // add controllers
-$app->addController($Account);
+// $app->addController($Account);
+// $app->addController($Product);
+// $app->addController($Material);
+// $app->addController($category);
+// $app->addController($color);
 
 // start server
-$app->start();
+// $app->start();

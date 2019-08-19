@@ -1,5 +1,9 @@
 <?php
 
+// globals
+// This secret is a placeholder and needs to be removed in production
+$secret = 'sec!ReT423*&';
+
 // utilities
 
 /**
@@ -14,8 +18,16 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/src/utilities/db_connect.php';
  */
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/utilities/db_connect_local.php'; 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/utilities/response.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/src/utilities/jwt.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/utilities/ken.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/utilities/action.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/utilities/controller.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/utilities/dispatcher.php';
+
+// Account
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/account/controller.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/account/model.php';
+
+// Product
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/products/controller.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/products/model.php';
