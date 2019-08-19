@@ -1,0 +1,15 @@
+.contact__container {
+    @include flex(row, nowrap, center, center);
+    padding: 10px;
+    background-color: $thm-lightgrey
+}
+
+.contact__map {
+    border: 2px solid $thm-grey;
+    height: 250px;
+}
+
+.contact__info-list-item {
+    list-style-type: none;
+    font-size: $thm-font-medlrg;
+}
