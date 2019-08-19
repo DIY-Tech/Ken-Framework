@@ -3,9 +3,9 @@
 // connects to the database
 function dbConnect_yours(){
   $server = "your Server";
-  $database = "generic db";
-  $user = "your user";
-  $password = "your password";
+  $database = "flatratemetal";
+  $user = "client";
+  $password = "SvX83seKj6&@";
   $dsn = "mysql:host=$server; dbname=$database";
   $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
   try {
