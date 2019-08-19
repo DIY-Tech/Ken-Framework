@@ -1,0 +1,69 @@
+.login {
+    @include flex(row, nowrap, center, center);
+    height: calc(100vh - 60px);
+}
+
+.login-container {
+    @include flex(column, nowrap, space-between, flex-start);
+    border: 2px solid $thm-blue;
+    padding: 50px 25px 50px 25px;
+    background-color: $thm-lightgrey;
+    @include bp($thm-bp-lrg) {
+        padding: 100px 100px 100px 100px;
+    } @include bp($thm-bp-xlrg) {
+        padding: 150px 150px 150px 150px;
+    }
+}
+
+.login-title {
+    margin-bottom: 10px;
+    color: $thm-grey;
+}
+
+.login__username-section, .login__password-section {
+    display: flex;
+    flex-direction: column;
+    color: $thm-grey;
+    font-size: $thm-font-lrg;
+    margin: 10px 0px 10px 0px;
+}
+
+.login__password-input, .login__username-input {
+    font-size: $thm-font-medlrg;
+}
+
+.login__username-title, .login__password-title {
+    font-weight: bold;
+    margin-bottom: 3.5px;
+    color: $thm-blue;
+}
+
+.login__application-link {
+    text-decoration: none;
+    color: $thm-blue;
+    font-size: $thm-font-tiny;
+    margin: 10px 0px 10px 0px;
+    &:hover {
+        color: $thm-grey;
+    } &:active {
+        color: $thm-black;
+    }
+}
+
+.login__submit-button {
+    text-decoration: none;
+    color: $thm-grey;
+    border: 2px solid $thm-grey;
+    padding: 5px 15px 5px 15px;
+    border-radius: 15px;
+    font-size: $thm-font-medlrg;
+    background-color: $thm-lightgrey;
+    margin: 10px 0px 10px 0px;
+    &:hover {
+        color: $thm-blue;
+    } &:active {
+        color: $thm-blue;
+        background-color: $thm-grey;
+        border-color: $thm-blue;
+    }
+}

@@ -1,0 +1,39 @@
+.home__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    background-color: $thm-grey;
+    animation: fade 5000ms linear infinite;
+    color: $thm-grey;
+}
+
+@keyframes fade {
+    0% {
+        background-color: $thm-lightgrey;
+    }
+    50% {
+        background-color: $thm-blue;
+    }
+    100% {
+        background-color: $thm-lightgrey;
+    }
+
+}
+
+.home__heading {
+    font-size: 35px;
+    margin: 0px;
+    text-shadow: 1px 1px $thm-black;
+    @include bp($thm-bp-sml) {
+        font-size: 55px;
+    } @include bp($thm-bp-med) {
+        font-size: 72px;
+    }
+}
+
+.home__tagline {
+    margin: 0px;
+    text-shadow: .2px .2px $thm-black;
+}
