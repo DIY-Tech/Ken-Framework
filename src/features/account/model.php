@@ -1,12 +1,12 @@
 <?php
 
 class AccountModel {
-    public static function create($filtload) {
+    public static function create($filtLoad) {
         // optional field
         $dynamicField = "";
         // optional value
         $dynamicValue = "";
-        if(isset($filtload['accountDiscount'])) {
+        if(isset($filtLoad['accountDiscount'])) {
             $dynamicField .= ", accountDiscount";
             $dynamicValue .= ", :accountDiscount";
         }
@@ -16,7 +16,7 @@ class AccountModel {
             (accountEmail, accountPassword $dynamicField)
             VALUES
             (:accountEmail, :accountPasswordHash $dynamicValue)",
-            $filtload,
+            $filtLoad,
             ['returnId' => TRUE]
         );
     }

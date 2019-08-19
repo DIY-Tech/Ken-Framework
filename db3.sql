@@ -59,11 +59,15 @@ DROP TABLE IF EXISTS `flatratemetal`.`product` ;
 CREATE TABLE IF NOT EXISTS `flatratemetal`.`product` (
   `productId` INT NOT NULL AUTO_INCREMENT,
   `productName` VARCHAR(45) NOT NULL,
-  `productPrice` VARCHAR(45) NOT NULL,
-  `productDistPrice` VARCHAR(45) NOT NULL,
+  `productRetailPrice` VARCHAR(45) NOT NULL,
+  `productCreated` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `productType` VARCHAR(45) NULL,
-  `productDescription` VARCHAR(45) NOT NULL,
-  `productImage` VARCHAR(45) NOT NULL,
+  `productDescription` VARCHAR(45) NULL,
+  `productDimension` VARCHAR(45) NULL,
+  `productBundleType` ENUM('bundle', 'box') NULL,
+  `productBundleCount` VARCHAR(45) NULL,
+  `productPalletCount` VARCHAR(45) NULL,
+  `productGage` VARCHAR(45) NULL,
   `material_materialId` INT NOT NULL,
   `category_categoryId` INT NOT NULL,
   PRIMARY KEY (`productId`),
@@ -115,12 +119,35 @@ DROP TABLE IF EXISTS `flatratemetal`.`account` ;
 CREATE TABLE IF NOT EXISTS `flatratemetal`.`account` (
   `accountId` INT NOT NULL AUTO_INCREMENT,
   `accountType` ENUM('admin', 'dist') NOT NULL DEFAULT 'dist',
-  `accountCreated` DATETIME NOT NULL,
+  `accountCreated` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `accountEmail` VARCHAR(45) NOT NULL,
   `accountPassword` VARCHAR(255) NOT NULL,
   `accountDiscount` VARCHAR(45) NULL,
   PRIMARY KEY (`accountId`))
 ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `flatratemetal`.`image`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `flatratemetal`.`image` ;
+
+CREATE TABLE IF NOT EXISTS `flatratemetal`.`image` (
+  `imagesId` INT NOT NULL AUTO_INCREMENT,
+  `imagePath` VARCHAR(255) NOT NULL,
+  `imageName` VARCHAR(45) NOT NULL,
+  `imageSize` VARCHAR(45) NOT NULL,
+  `imageCreated` DATETIME NOT NULL,
+  `imageType` ENUM('jpg', 'png', 'svg') NOT NULL,
+  `product_productId` INT NOT NULL,
+  PRIMARY KEY (`imagesId`),
+  INDEX `fk_image_product1_idx` (`product_productId` ASC),
+  CONSTRAINT `fk_image_product1`
+    FOREIGN KEY (`product_productId`)
+    REFERENCES `flatratemetal`.`product` (`productId`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

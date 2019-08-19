@@ -32,3 +32,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/account/model.php';
 // Product
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/products/controller.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/products/model.php';
+
+// Material
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/material/controller.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/material/model.php';
+
+// Category
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/category/controller.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/category/model.php';

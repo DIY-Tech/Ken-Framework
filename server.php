@@ -23,7 +23,7 @@ $app = new Ken(['tokenValidation' => FALSE]);
 
 // add controllers
 $app->addController($Account);
-// $app->addController($Product);
+$app->addController($Product);
 // $app->addController($Material);
 // $app->addController($category);
 // $app->addController($color);
