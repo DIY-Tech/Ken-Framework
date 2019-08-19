@@ -15,7 +15,7 @@ class MaterialModel {
             "SELECT * FROM material WHERE materialId = :materialId",
             $filtLoad,
             ['fetchConstant' => 'fetch']
-        )
+        );
     }
 
     public static function getAll($filtLoad) {
@@ -23,6 +23,14 @@ class MaterialModel {
             "SELECT * FROM material",
             $filtLoad,
             ['fetchConstant' => 'fetchAll']
+        );
+    }
+
+    public static function delete($filtLoad) {
+        return Dispatcher::dispatch(
+            "DELETE FROM material WHERE materialId = :materialId",
+            $filtLoad,
+            ['returnId' => TRUE]
         );
     }
 }

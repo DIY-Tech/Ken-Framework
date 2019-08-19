@@ -24,8 +24,8 @@ $app = new Ken(['tokenValidation' => FALSE]);
 // add controllers
 $app->addController($Account);
 $app->addController($Product);
-// $app->addController($Material);
-// $app->addController($category);
+$app->addController($Material);
+$app->addController($Category);
 // $app->addController($color);
 
 // start server
