@@ -1,0 +1,23 @@
+.nav {
+    width: 50vw;
+}
+
+.nav__list {
+    list-style-type: none;
+    @include flex(row, nowrap, flex-end, center);
+    font-weight: 300;
+    width: 50vw;
+}
+
+.nav__list-item {
+    padding: 0px 20px 0px 10px;
+}
+
+.nav__link {
+    text-decoration: none;
+    color: $thm-blue;
+    font-size: $thm-font-medlrg;
+    &:hover {
+        color: $thm-grey;
+    }
+}

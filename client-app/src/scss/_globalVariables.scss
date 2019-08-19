@@ -31,8 +31,39 @@
 
 // 1. color
 
-$thm-grey: #008080;
-$thm-black: #800020;
-$thm-blue: #555555;
+$thm-grey: #666;
+$thm-lightgrey: #F5F5F5;
+$thm-black: #000;
+$thm-blue: dodgerblue;
 $thm-white: #fff;
-$thm-font-primary: sans serif;
+
+// 2. fonts
+$thm-font-primary: 'Open Sans', sans-serif;
+
+// Font Size
+$thm-font-tiny: 12px;
+$thm-font-sml: 14px;
+$thm-font-med: 16px;
+$thm-font-medlrg: 18px;
+$thm-font-lrg: 24px;
+$thm-font-xlrg: 28px;
+$thm-font-ult: 32px;
+$thm-font-xult: 40px;
+
+// Default Font-Heading
+$thm-h1 : $thm-font-ult;
+$thm-h2 : $thm-font-xlrg;
+$thm-h3 : $thm-font-lrg;
+$thm-h4 : $thm-font-medlrg;
+
+// 3. Breakpoints (subject to change)
+
+$thm-bp-tiny: 350px;
+$thm-bp-sml: 600px;
+$thm-bp-smlmed: 650px;
+$thm-bp-med: 800px;
+$thm-bp-medlrg: 900px;
+$thm-bp-lrg: 1024px;
+$thm-bp-lrgxlg: 1200px;
+$thm-bp-xlrg: 1280px;
+$thm-bp-ult: 1440px;

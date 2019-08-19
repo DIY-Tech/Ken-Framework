@@ -1,7 +1,13 @@
 // Global Style Settings
 @import "./scss/globalVariables";
-@import "./scss/default(reset)";
+@import "./scss/default";
 @import "./scss/functions";
 @import "./scss/utilities";
 
-@import "./ui/test";
+
+@import "./scss/components/header";
+@import "./scss/components/footer";
+@import "./scss/components/nav";
+
+@import "./ui/Views/Login/login";
+@import "./ui/Views/Home/home";

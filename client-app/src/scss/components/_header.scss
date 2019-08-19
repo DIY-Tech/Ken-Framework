@@ -1,0 +1,27 @@
+.header {
+    background-color: $thm-lightgrey;
+    color: $thm-blue;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    font-size: $thm-h2;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+    @include flex(row, nowrap, space-between, center);
+}
+
+.header__title, .header__icon {
+    padding-left: 10px;
+    font-weight: 300;
+}
+
+.home__anchor {
+    text-decoration: none;
+    color: $thm-blue;
+    &:hover {
+        color: $thm-grey;
+    }
+}
