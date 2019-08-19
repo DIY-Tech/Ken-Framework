@@ -6,8 +6,8 @@
  * This outlines the general structure of the
  * server file.
  */
-echo("<h1>Server Running! Woot Woo!</h1>");
-// require_once $_SERVER['DOCUMENT_ROOT'] . '/src/include.php';
+
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/include.php';
 
 // CSRF (cross-site request forgery) vulnerability
 // due to serving spa's on seprate local server for 
@@ -19,14 +19,14 @@ echo("<h1>Server Running! Woot Woo!</h1>");
 // header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS");
 
 // Instantiate app
-// $app = new Ken(['tokenValidation' => TRUE, 'actionExemptions' => ['createAccount']]);
+$app = new Ken(['tokenValidation' => FALSE, 'actionExemptions' => ['createAccount']]);
 
 // add controllers
-// $app->addController($Account);
+$app->addController($Account);
 // $app->addController($Product);
 // $app->addController($Material);
 // $app->addController($category);
 // $app->addController($color);
 
 // start server
-// $app->start();
+$app->start();

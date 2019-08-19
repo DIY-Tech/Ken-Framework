@@ -206,15 +206,15 @@ class Ken {
         if(!empty($json_str)) {
 
             $reqArr = json_decode($json_str, true);
-            
-            $this->reqAction = filter_var($reqArr['action'], FILTER_SANITIZE_STRING);
+            // return Response::data($json_str, "Bad post request. Either the controller action or payload was not sent.");
             $this->reqController = filter_var($reqArr['controller'], FILTER_SANITIZE_STRING);
+            $this->reqAction = filter_var($reqArr['action'], FILTER_SANITIZE_STRING);
             $this->payload = $reqArr['payload'];
 
             if( empty($this->reqAction) || 
                 empty($this->reqController)|| 
                 empty($this->payload)){
-                echo json_encode(response("failure", "Bad post request. Either the controller action or payload was not sent."));
+                echo Response::err("Bad post request. Either the controller action or payload was not sent.");
                 return; 
                 exit;
             }

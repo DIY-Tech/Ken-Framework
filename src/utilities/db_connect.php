@@ -1,8 +1,8 @@
 <?php
 
 // connects to the database
-function dbConnect_yours(){
-  $server = "your Server";
+function dbConnect(){
+  $server = "site1";
   $database = "flatratemetal";
   $user = "client";
   $password = "SvX83seKj6&@";
