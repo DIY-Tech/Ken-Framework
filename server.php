@@ -6,7 +6,7 @@
  * This outlines the general structure of the
  * server file.
  */
-echo("<h1>Server Running</h1>");
+echo("<h1>Server Running! Woot Woo!</h1>");
 // require_once $_SERVER['DOCUMENT_ROOT'] . '/src/include.php';
 
 // CSRF (cross-site request forgery) vulnerability
