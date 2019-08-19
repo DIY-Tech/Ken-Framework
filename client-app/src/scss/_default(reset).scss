@@ -1,0 +1,16 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: $thm-font-primary;
+    background-color: $thm-white;
+}
+
+main {
+    min-height: calc(100vh - 300px);
+    position: relative;
+}
