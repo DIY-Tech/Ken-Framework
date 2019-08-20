@@ -193,6 +193,6 @@ class Controller
                 return $storedAction->action($params);
             }
         }
-        return response("failure", "The specified action has not been defined.");
+        return Response::err("The specified action has not been defined.");
     }
 }
