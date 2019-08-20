@@ -7,21 +7,38 @@
     left: 0;
     right: 0;
     font-size: $thm-h2;
-    display: flex;
-    align-items: center;
     z-index: 1;
-    @include flex(row, nowrap, space-between, center);
+    @include bp($thm-bp-lrg) {
+        @include flex (row, nowrap, space-between, center);
+    }
 }
 
-.header__title, .header__icon {
-    padding-left: 10px;
+.header__container {
+    @include bp($thm-bp-lrg) {
+        width: 40vw;
+    }
+    @include flex(row, nowrap, space-between, center);
+    padding: 0px 20px 0px 20px;
+    height: 60px;
+}
+
+.header__icon {
     font-weight: 300;
+}
+
+.header__title {
+    padding-left: 10px;
 }
 
 .home__anchor {
     text-decoration: none;
     color: $thm-blue;
+    display: block;
     &:hover {
         color: $thm-grey;
     }
+}
+
+.menu__container {
+    padding: 15px;
 }

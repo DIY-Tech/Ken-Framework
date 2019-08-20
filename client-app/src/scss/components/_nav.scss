@@ -1,23 +1,93 @@
 .nav {
-    width: 50vw;
-}
-
-.nav__list {
-    list-style-type: none;
-    @include flex(row, nowrap, flex-end, center);
-    font-weight: 300;
-    width: 50vw;
+    width: 100vw;
+    height: 0;
+    overflow: hidden;
+    &.open {
+        height: calc(100vh - 60px);
+        background-color: $thm-lightgrey;
+        @include bp($thm-bp-lrg) {
+            height: 60px;
+        }
+    } @include bp($thm-bp-lrg) {
+        height: 60px;
+        overflow: visible;
+        width: 60vw;
+        @include flex(row, nowrap, flex-end, center);
+    }
 }
 
 .nav__list-item {
-    padding: 0px 20px 0px 10px;
+    list-style-type: none;
+    @include flex(row, nowrap, flex-start, center);
+    font-weight: 300;
+    padding: 5px 0px 5px 0px;
+    @include bp($thm-bp-lrg) {
+        margin-right: 20px;
+    }
+}
+
+.nav__list {
+    @include bp($thm-bp-lrg) {
+        width: 100%;
+        @include flex(row, nowrap, flex-end, center);
+    }
 }
 
 .nav__link {
     text-decoration: none;
     color: $thm-blue;
-    font-size: $thm-font-medlrg;
+    font-size: $thm-font-lrg;
     &:hover {
         color: $thm-grey;
     }
 }
+
+.nav__menu {
+    @include transition();
+    height: 3px;
+    width: 25px;
+    border-radius: 15px;
+    display: flex;
+    position: relative;
+    background-color: $thm-blue;
+    &:before {
+        @include transition();
+        content: "";
+        position: absolute;
+        top: 8px;
+        height: 3px;
+        width: 25px;
+        border-radius: 15px;
+        display: block;
+        background-color: $thm-blue;
+    } &:after {
+        @include transition();
+        content: "";
+        position: absolute;
+        bottom: 8px;
+        height: 3px;
+        width: 25px;
+        border-radius: 15px;
+        display: block;
+        background-color: $thm-blue;
+    } @include bp($thm-bp-lrg) {
+        display: none;
+    }
+}
+
+.nav__menu.open {
+    background-color: $thm-blue;
+    background-color: transparent;
+    &:before {
+        transform: rotate(45deg);
+        top: 0;
+    }
+    &:after {
+        transform: rotate(-45deg);
+        top: 0;
+    }
+    @include bp($thm-bp-lrg) {
+
+    }
+}
+

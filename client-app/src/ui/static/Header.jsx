@@ -1,13 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Nav from './Nav';
 
 function Header() {
 
-    // const [toggle, setToggle] = useState(false);
+    const [toggle, setToggle] = useState(false);
 
-    // function toggleNav() {
-    //     setToggle(!toggle);
-    // }
+    function toggleNav() {
+        setToggle(!toggle);
+    }
 
     return (
         <header className="header">
@@ -15,9 +15,12 @@ function Header() {
                 <a className="home__anchor" href="/">
                 <i className="fas fa-home header__icon"></i>
                 <span className="header__title">Flat Rate Metal</span>
-                </a> 
+                </a>
+                <div className="menu__container" onClick={toggleNav}>
+                <span className={"nav__menu " + (toggle ? "open" : "")}></span> 
+                </div>
             </div>
-            <Nav />
+            <Nav toggleNav={toggleNav} boolean={toggle}/>
         </header>
 
     );

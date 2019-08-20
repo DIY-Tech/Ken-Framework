@@ -8,11 +8,11 @@ function Contact() {
             </div>
             <div className="contact__info-container">
                 <ul className="contact__info-list">
-                    <li className="contact__info-list-item"><i class="fas fa-phone-square contact__icon"></i>Phone</li>
-                    <li className="contact__info-list-item"><i className="fas fa-envelope contact__icon"/>Email</li>
-                    <li className="contact__info-list-item"><i class="fab fa-facebook-square contact__icon"></i>Facebook</li>
-                    <li className="contact__info-list-item"><i className="fab fa-youtube contact__icon"/>YouTube</li>
-                    <li className="contact__info-list-item"><i className="fab fa-instagram contact__icon"/>Instagram</li>
+                    <li className="contact__info-list-item"><i class="fas fa-phone-square contact__icon"></i><a className="contact__link" href="tel:801-368-2960">Phone</a></li>
+                    <li className="contact__info-list-item"><i className="fas fa-envelope contact__icon"/><a className="contact__link" href="orders@flatratemetal.com">Email</a></li>
+                    <li className="contact__info-list-item"><i class="fab fa-facebook-square contact__icon"></i><a className="contact__link" href="https://www.facebook.com/floodandfiresolutions/">Facebook</a></li>
+                    <li className="contact__info-list-item"><i className="fab fa-youtube contact__icon"/><a className="contact__link" href="https://www.facebook.com/floodandfiresolutions/">YouTube</a></li>
+                    <li className="contact__info-list-item"><i className="fab fa-instagram contact__icon"/><a className="contact__link" href="https://www.facebook.com/floodandfiresolutions/">Instagram</a></li>
                 </ul>
             </div>
         </div>

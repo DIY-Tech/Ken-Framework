@@ -1,7 +1,10 @@
 .contact__container {
+    @include bp($thm-bp-sml) {
     @include flex(row, nowrap, center, center);
+    }
     padding: 10px;
-    background-color: $thm-lightgrey
+    background-color: $thm-lightgrey;
+    @include flex(column, nowrap, center, flex-start);
 }
 
 .contact__map {
@@ -12,4 +15,21 @@
 .contact__info-list-item {
     list-style-type: none;
     font-size: $thm-font-medlrg;
+    color: $thm-grey;
+    padding: 10px 0px 10px 0px;
+}
+
+.contact__icon {
+    padding-right: 10px;
+}
+
+.contact__link {
+    text-decoration: none;
+    color: $thm-grey;
+}
+
+.contact__info-list-item, .contact__link {
+    &:hover {
+        color: $thm-blue;
+    }
 }
