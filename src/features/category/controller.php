@@ -16,7 +16,6 @@ $Category->addAction('update', function($payload) {
     $filtLoad = Controller::filterPayload($payload);
     Controller::required(['categoryId', 'categoryName'], $filtLoad);
 }, TRUE);
-
 $Category->addAction('delete', function($payload) {
     $filtLoad = Controller::filterPayload($payload);
     Controller::required(['categoryId'], $filtLoad);
@@ -28,7 +27,6 @@ $Category->addAction('delete', function($payload) {
         return Response::err("Category did not delete successfully");
     }
 }, TRUE);
-
 $Category->addAction('getOne', function($payload) {
     $filtLoad = Controller::filterPayload($payload);
     Controller::required(['categoryId'], $filtLoad);

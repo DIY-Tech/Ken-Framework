@@ -25,8 +25,21 @@ $Product->addAction('update', function($payload){}, TRUE);
 
 $Product->addAction('delete', function($payload){}, TRUE);
 
-$Product->addAction('getOne', function($payload){});
+$Product->addAction('getOne', function($payload){
+    $filtLoad = Controller::filterPayload($payload);
+    Controller::required(['productId'], $filtLoad);
+    $productData = ProductModel::getOne($filtLoad);
+    $productData['images'] = ImageModel::getByProductId($filtLoad);
+    return Response::data($productData, "Product retrieved");
+});
 
 $Product->addAction('getAll', function($payload){
     return Response::data(ProductModel::getAll($payload), "All Products");
 });
+
+$Product->addAction('getByCategory', function($payload) {
+    return Response::data(CategoryModel::getAll($payload), "All categorys Retrieved");
+}, TRUE);
+$Product->addAction('getByMaterial', function($payload) {
+    return Response::data(CategoryModel::getAll($payload), "All categorys Retrieved");
+}, TRUE);

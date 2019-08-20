@@ -25,3 +25,11 @@ $Color->addAction('getByProductId', function($payload) {
     
     return Response::data(ColorModel::getByProductId($filtLoad), 'All colors of the selected product have been retrieved');
 });
+
+$Color->addAction('delete', function($payload) {
+    $filtLoad = Controller::filterPayload($payload);
+    Controller::required(['colorId'], $filtLoad);
+    if(ColorModel::delete($filtLoad) == 1) {
+        return Response::success("Color was deleted successfully");
+    }
+}, TRUE);

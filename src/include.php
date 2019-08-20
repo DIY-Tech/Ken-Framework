@@ -40,3 +40,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/material/model.php';
 // Category
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/category/controller.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/category/model.php';
+
+// Image
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/category/controller.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/category/model.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/category/utilities.php';

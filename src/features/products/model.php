@@ -52,9 +52,28 @@ class ProductModel {
 
     public static function getAll($filtLoad) {
         return Dispatcher::dispatch (
-            "SELECT * FROM product",
+            "SELECT prod.*, mat.materialName, cat.categoryName
+            FROM product AS prod
+            INNER JOIN material AS mat
+            ON prod.material_materialId = mat.materialId
+            INNER JOIN category AS cat
+            ON prod.category_categoryId = cat.categoryId",
             $filtLoad,
             ['fetchConstant' => 'fetchAll']
+        );
+    }
+
+    public static function getOne($filtLoad) {
+        return Dispatcher::dispatch (
+            "SELECT prod.*, mat.materialName, cat.categoryName
+             FROM product AS prod
+             INNER JOIN material AS mat
+             ON prod.material_materialId = mat.materialId
+             INNER JOIN category AS cat
+             ON prod.category_categoryId = cat.categoryId
+             WHERE productId = :productId",
+            $filtLoad,
+            ['fetchConstant' => 'fetch']
         );
     }
 }
