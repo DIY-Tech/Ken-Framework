@@ -7,7 +7,7 @@
  * server file.
  */
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/src/include.php';
+ require_once $_SERVER['DOCUMENT_ROOT'] . '/src/include.php';
 
 // CSRF (cross-site request forgery) vulnerability
 // due to serving spa's on seprate local server for 
