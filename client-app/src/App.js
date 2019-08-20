@@ -9,6 +9,7 @@ import ScrollToTop from './ui/static/ScrollToTop';
 import State from './State';
 import AdminDashboard from './ui/Views/Admin/AdminDashboard/AdminDashboard';
 import ProtectedRoute from './ui/static/ProtectedRoute';
+import MatCatForm from './ui/Views/Admin/MatCatForm/MatCatForm';
 
 export const AppContext = React.createContext(undefined);
 
@@ -35,6 +36,7 @@ function App() {
             <Route exact={true} path="/" component={Home} />
             <Route path="/Dist-Login" component={Login} />
             <ProtectedRoute isAdminPage={true} path="/Admin-Dashboard" component={<AdminDashboard />} />
+            <ProtectedRoute isAdminPage={true} path="/Add-Material-Category" component={<MatCatForm />} />
           </Switch>
           <Footer />
         </ScrollToTop>
