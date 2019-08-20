@@ -1,0 +1,51 @@
+.admin__container {
+    @include flex(column, nowrap, center, center);
+}
+
+.admin__heading-container {
+    @include flex(row, nowrap, center, center);
+    height: 150px;
+    width: 100vw;
+    background-color: $thm-lightgrey;
+    animation: fade 5s linear infinite;
+}
+
+.admin__option-container {
+    @include flex(column, nowrap, center, center);
+    @include bp($thm-bp-med) {
+        @include flex(row, nowrap, space-around, flex-start);
+    }
+}
+
+.admin__heading {
+    color: $thm-grey;
+}
+
+.admin__section-heading {
+    color: $thm-grey;
+    font-size: $thm-font-xlrg;
+}
+
+.admin__section-option-container {
+    @include flex(column, nowrap, center, center);
+    width: 300px;
+}
+
+.admin__option {
+    border: 2px solid $thm-blue;
+    background-color: $thm-lightgrey;
+    color: $thm-grey;
+    text-decoration: none;
+    padding: 5px;
+    width: 200px;
+    margin: 5px;
+    text-align: center;
+    font-size: $thm-font-lrg;
+    &:hover {
+        background-color: $thm-grey;
+        color: $thm-blue;
+    } &:active {
+        color: $thm-blue;
+        background-color: $thm-white;
+    }
+}
