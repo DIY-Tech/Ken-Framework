@@ -1,55 +1,77 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
+
+function imageReducer(state, action) {
+    switch(action.type) {
+        case 'addImage':
+            return [...state, action.data];
+        default:
+            throw new Error();
+    }
+}
 
 function ProductImage() {
-
+    
+    const [previewImages, dispatch] = useReducer(imageReducer, []);
     const [images, setImages] = useState([]);
-    const [previewImages, setPreviewImages] =useState([]);
-
-    function dragEnter(e) {
+    
+    function dragEnter(e) { 
+        console.log("enter")
         e.preventDefault();
         e.stopPropagation();
     }
 
-    function dragOver(e) {
+    function dragOver(e) { 
+        console.log("over")
         e.preventDefault();
         e.stopPropagation();
     }
 
-    function dragLeave(e) {
+    function dragLeave(e) { 
+        console.log("leave")
         e.preventDefault();
         e.stopPropagation();
     }
 
-    function drop(e) {
+    function drop(e) { 
+        console.log("drop")
         e.preventDefault();
         e.stopPropagation();
         let data = e.dataTransfer;
         let files = data.files;
-        HandleFiles(files);
+        handleFiles(files);
     }
 
-    function HandleFiles(files) {
-        files = [...files];
-        setImages(files);
-        images.ForEach(previewFile);
-    }
-
+    
     function previewFile(file) {
-        let reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onloadend = function() {
-            setPreviewImages([...previewImages, reader.result]);
-        }
+        let imgSrc = URL.createObjectURL(file);
+        console.log(imgSrc);
+        addImageToPreview(imgSrc);
+    }
+
+    function addImageToPreview(img) {
+        console.log(previewImages);
+        dispatch({type: 'addImage', data: img});
+    }
+
+    function handleFiles(files) {
+        setImages([...images, ...files]);
+        [...images, ...files].forEach(file => {
+            previewFile(file);
+        })
     }
 
     return (
-        <div className="image__dragArea"dragEnter={dragEnter} dragOver={dragOver} dragLeave={dragLeave} drop={drop}>
+        <div className="image__dragArea" onDragEnter={dragEnter} onDragOver={dragOver} onDragLeave={dragLeave} onDrop={drop}>
+         {/* <div className="image__dragArea"> */}
             <form action="">
                 <p></p>
-                <input type="file" multiple accept="image/*" />
+                <input type="file" multiple accept="image/*" onChange={e => handleFiles(e.target.files)} />
                 <label htmlFor="">Select Images</label>
             </form>
-            <div className="imageOutput">{previewImages.map((img, i) => (<img src={img} key={i} />))}</div>
+            {console.log(images)}
+            <div className="imageOutput">{previewImages.map((img, i) => {
+               return <img className="image--sml" src={img} key={i} />;
+            })}</div>
         </div>
     )
 }
