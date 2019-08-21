@@ -1,0 +1,70 @@
+.product__container {
+    @include flex(column, nowrap, center, center);
+    border: 2px solid $thm-blue;
+    color: $thm-grey;
+    background-color: $thm-lightgrey;
+    padding: 20px;
+    height: 600px;
+    @include bp($thm-bp-med) {
+        height: 700px;
+        margin: 100px;
+    } @include bp($thm-bp-xlrg) {
+        height: 700px;
+        margin: 100px 300px 100px 300px;
+    }
+    // margin: 100px;
+    // width: 320px;
+}
+
+.product__heading {
+    margin: 10px 0px 25px 0px;
+    text-align: center;
+}
+
+.product__section {
+    padding: 5px;
+    @include bp($thm-bp-sml) {
+    font-size: $thm-font-medlrg;
+    }
+    @include bp($thm-bp-med) {
+    font-size: $thm-font-lrg;
+    }
+}
+
+.product__label {
+    padding-right: 10px;
+}
+
+.product__input {
+    @include bp($thm-bp-sml) {
+        font-size: $thm-font-medlrg;
+        }
+    @include bp($thm-bp-med) {
+        font-size: $thm-font-lrg;
+        }
+}
+
+.product__required {
+    margin: 5px 0px 15px 0px;
+    text-align: center;
+    font-size: $thm-font-tiny;
+}
+
+.product__button {
+    text-decoration: none;
+    color: $thm-grey;
+    border: 2px solid $thm-grey;
+    padding: 5px 15px 5px 15px;
+    border-radius: 15px;
+    font-size: $thm-font-medlrg;
+    background-color: $thm-lightgrey;
+    margin-left: 40%;
+    text-align: center;
+    &:hover {
+        color: $thm-blue;
+    } &:active {
+        color: $thm-blue;
+        background-color: $thm-grey;
+        border-color: $thm-blue;
+    }
+}

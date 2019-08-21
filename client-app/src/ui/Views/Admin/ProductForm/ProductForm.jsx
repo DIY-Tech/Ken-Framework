@@ -1,31 +1,32 @@
 import React, { useState, useEffect, useContext } from 'react';
-import {AppContext} from '../../../../App';
+import { AppContext } from '../../../../App';
 import ProductImage from './ProductImage';
+import { Link } from 'react-router-dom';
 
 function ProductForm() {
-    const{accountData} = useContext(AppContext);
+    const { accountData } = useContext(AppContext);
     const [materials, setMaterials] = useState([]);
     const [categories, setCategories] = useState([]);
 
     useEffect(
         () => {
             fetch('http://site1/server.php?controller=material&action=getAll')
-            .then(res => res.json())
-            .then(res => {
-                if(res.status === "success") {
-                    setMaterials(res.data);
-                }
-            })
+                .then(res => res.json())
+                .then(res => {
+                    if (res.status === "success") {
+                        setMaterials(res.data);
+                    }
+                })
             fetch('http://site1/server.php?controller=category&action=getAll')
-            .then(res => res.json())
-            .then(res => {
-                if (res.status === "success") {
-                    setCategories(res.data);
-                }
-            })
-        },[]
+                .then(res => res.json())
+                .then(res => {
+                    if (res.status === "success") {
+                        setCategories(res.data);
+                    }
+                })
+        }, []
     )
-    
+
 
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
@@ -38,7 +39,7 @@ function ProductForm() {
     const [bundleCount, setBundleCount] = useState("");
     const [palletCount, setPalletCount] = useState("");
     const [weight, setWeight] = useState("");
-    
+
     function addProduct() {
         fetch('http://site1/server.php', {
             method: 'POST',
@@ -66,79 +67,79 @@ function ProductForm() {
                 }
             })
         })
-        .then(res => res.json())
-        .then(res => {
-            if (res.status === "success") {
-                console.log(res.data);
-            }
-        })
+            .then(res => res.json())
+            .then(res => {
+                if (res.status === "success") {
+                    console.log(res.data);
+                }
+            })
     }
 
-    return(
+    return (
         <main>
+            <div className="product__container">
             <form>
-                <h2>Add New Product</h2>
-                <div>
-                    <label htmlFor="">Name:</label>
-                    <input type="text" onChange={e => setName(e.target.value)}/>
-                </div>
-                <div>
-                    <label htmlFor="">Price:</label>
-                    <input type="text" onChange={e => setPrice(e.target.value)}/>
-                </div>
-                <div>
-                    <label htmlFor="">Material:</label>
-                    <select name="" id="" onChange={e => setMaterial(e.target.value)}>
-                        { materials.map(mat => (
-                            <option key={mat.materialId} value={mat.materialId}>{mat.materialName}</option>
-                        ))}
-                    </select>
-                </div>
-                <div>
-                    <label htmlFor="">Category:</label>
-                    <select name="" id="" onChange={e => setCategory(e.target.value)}>
-                    { categories.map(cat => (
-                            <option key={cat.categoryId} value={cat.categoryId}>{cat.categoryName}</option>
-                        ))}
-                    </select>
-                </div>
-                <hr/>
-                <div>
-                    <label htmlFor="">Description:</label>
-                    <input type="text" onChange={e => setDescription(e.target.value)}/>
-                </div>
-                <div>
-                    <label htmlFor="">Type:</label>
-                    <input type="text" onChange={e => setType(e.target.value)}/>
-                </div>
-                <div>
-                    <label htmlFor="">Dimensions:</label>
-                    <input type="text" onChange={e => setDimensions(e.target.value)}/>
-                </div>
-                <div>
-                    <label htmlFor="">Bundle Type</label>
-                    <select name="" id="" onChange={e => setBundleType(e.target.value)}>
-                        <option value="single">Default</option>
-                        <option value="box">Box</option>
-                        <option value="bundle">Bundle</option>
-                    </select>
-                </div>
-                <div>
-                    <label htmlFor="">Bundle Count:</label>
-                    <input type="number" min="1" onChange={e => setBundleCount(e.target.value)}/>
-                </div>
-                <div>
-                    <label htmlFor="">Pallet Count:</label>
-                    <input type="number" min="1" onChange={e => setPalletCount(e.target.value)}/>
-                </div>
-                <div>
-                    <label htmlFor="">Weight:</label>
-                    <input type="number" min="1" onChange={e => setWeight(e.target.value)}/>
-                </div>
-                <div>
-                    <button type="button" onClick={addProduct}>Add Product</button>
-                </div>
-            </form>
+                    <h1 className="product__heading">Add New Product</h1>
+                    <div className="product__section">
+                        <label className="product__label" htmlFor="">Name*</label>
+                        <input className="product__input" type="text" onChange={e => setName(e.target.value)} />
+                    </div>
+                    <div className="product__section">
+                        <label className="product__label" htmlFor="">Price*</label>
+                        <input className="product__input" type="text" onChange={e => setPrice(e.target.value)} />
+                    </div>
+                    <div className="product__section">
+                        <label className="product__label" htmlFor="">Material*</label>
+                        <select className="product__input" name="" id="" onChange={e => setMaterial(e.target.value)}>
+                            {materials.map(mat => (
+                                <option key={mat.materialId} value={mat.materialId}>{mat.materialName}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="product__section">
+                        <label className="product__label" htmlFor="">Category*</label>
+                        <select className="product__input" name="" id="" onChange={e => setCategory(e.target.value)}>
+                            {categories.map(cat => (
+                                <option key={cat.categoryId} value={cat.categoryId}>{cat.categoryName}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="product__section">
+                        <label className="product__label" htmlFor="">Description</label>
+                        <input className="product__input" type="text" onChange={e => setDescription(e.target.value)} />
+                    </div>
+                    <div className="product__section">
+                        <label className="product__label" htmlFor="">Type</label>
+                        <input className="product__input" type="text" onChange={e => setType(e.target.value)} />
+                    </div>
+                    <div className="product__section">
+                        <label className="product__label" htmlFor="">Dimensions</label>
+                        <input className="product__input" type="text" onChange={e => setDimensions(e.target.value)} />
+                    </div>
+                    <div className="product__section">
+                        <label className="product__label" htmlFor="">Bundle Type</label>
+                        <select className="product__input" name="" id="" onChange={e => setBundleType(e.target.value)}>
+                            <option value="single">Default</option>
+                            <option value="box">Box</option>
+                            <option value="bundle">Bundle</option>
+                        </select>
+                    </div>
+                    <div className="product__section">
+                        <label className="product__label" htmlFor="">Bundle Count</label>
+                        <input className="product__input" type="number" min="1" onChange={e => setBundleCount(e.target.value)} />
+                    </div>
+                    <div className="product__section">
+                        <label className="product__label" htmlFor="">Pallet Count</label>
+                        <input className="product__input" type="number" min="1" onChange={e => setPalletCount(e.target.value)} />
+                    </div>
+                    <div className="product__section">
+                        <label className="product__label" htmlFor="">Weight</label>
+                        <input className="product__input" type="number" min="1" onChange={e => setWeight(e.target.value)} />
+                    </div>
+                    <p className="product__required">*required fields</p>
+                    <Link className="product__button" onClick={addProduct} to="/Add-Images">Next</Link>
+                </form>
+            </div>
             <ProductImage />
         </main>
     );
