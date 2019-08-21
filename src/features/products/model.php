@@ -5,40 +5,43 @@ class ProductModel {
         $dynamicField = "";
         $dynamicValue = "";
 
-        if(isset($filterLoad['productType'])) {
+        if(isset($filtLoad['productType'])) {
             $dynamicField .= ", productType";
             $dynamicValue .= ", :productType";
         }
 
-        if(isset($filterLoad['productDescription'])) {
+        if(isset($filtLoad['productDescription'])) {
             $dynamicField .= ", productDescription";
             $dynamicValue .= ", :productDescription";
         }
 
-        if(isset($filterLoad['productDimension'])) {
+        if(isset($filtLoad['productDimension'])) {
             $dynamicField .= ", productDimension";
             $dynamicValue .= ", :productDimension";
         }
 
-        if(isset($filterLoad['productBundleType'])) {
+        if(isset($filtLoad['productBundleType'])) {
             $dynamicField .= ", productBundleType";
             $dynamicValue .= ", :productBundleType";
         }
 
-        if(isset($filterLoad['productBundleCount'])) {
+        if(isset($filtLoad['productBundleCount'])) {
             $dynamicField .= ", productBundleCount";
             $dynamicValue .= ", :productBundleCount";
         }
 
-        if(isset($filterLoad['productPalletCount'])) {
+        if(isset($filtLoad['productPalletCount'])) {
             $dynamicField .= ", productPalletCount";
             $dynamicValue .= ", :productPalletCount";
         }
 
-        if(isset($filterLoad['productGage'])) {
+        if(isset($filtLoad['productGage'])) {
             $dynamicField .= ", productGage";
             $dynamicValue .= ", :productGage";
         }
+        // var_dump($dynamicValue);
+        // echo($dynamicValue);
+        // return;
 
         return Dispatcher::dispatch (
             "INSERT INTO product
