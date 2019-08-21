@@ -38,7 +38,7 @@ function MatCatForm() {
                     'Accept': 'application/json'
                 },
                 body: JSON.stringify({
-                    controller: "material",
+                    controller: "category",
                     action: 'create',
                     payload: {
                         categoryName: categoryName

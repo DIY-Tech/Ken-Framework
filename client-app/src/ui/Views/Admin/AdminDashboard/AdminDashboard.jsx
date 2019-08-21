@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function AdminDashboard() {
     
@@ -11,15 +12,15 @@ function AdminDashboard() {
                 <div className="admin__option-container">
                     <div className="admin__section-option-container">
                         <h2 className="admin__section-heading">Manage Users</h2>
-                        <a className="admin__option" href="/">Add User</a>
-                        <a className="admin__option" href="/">View Users</a>
+                        <Link className="admin__option" to="/">Add User</Link>
+                        <Link className="admin__option" to="/">View Users</Link>
                     </div>
                     <div className="admin__section-option-container">
                         <h2 className="admin__section-heading">Manage Products</h2>
-                        <a className="admin__option" href="/">Add Product</a>
-                        <a className="admin__option" href="/">View Products</a>
-                        <a className="admin__option" href="/">Add Material</a>
-                        <a className="admin__option" href="/">Add Category</a>
+                        <Link className="admin__option" to="/Product-Form">Add Product</Link>
+                        <Link className="admin__option" to="/">View Products</Link>
+                        <Link className="admin__option" to="/Add-Material-Category">Add Material</Link>
+                        <Link className="admin__option" to="/Add-Material-Category">Add Category</Link>
                     </div>
                 </div>
             </div>

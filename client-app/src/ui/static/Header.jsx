@@ -4,7 +4,6 @@ import { AppContext } from '../../App';
 
 function Header() {
 
-    const {accountData} = useContext(AppContext);
     const [toggle, setToggle] = useState(false);
 
     function toggleNav() {
@@ -16,7 +15,7 @@ function Header() {
             <div className="header__container">
                 <a className="home__anchor" href="/">
                 <i className="fas fa-home header__icon"></i>
-                <span className="header__title">Flat Rate Metal {accountData.accountEmail}</span>
+                <span className="header__title">Flat Rate Metal</span>
                 </a>
                 <div className="menu__container" onClick={toggleNav}>
                 <span className={"nav__menu " + (toggle ? "open" : "")}></span> 
