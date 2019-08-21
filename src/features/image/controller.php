@@ -21,7 +21,7 @@ $Image->addAction('upload', function($payload) {
     $source = $_FILES['fileUpload']['tmp_name'];
     $target = $image_dir_path . '/' . $imageName;
     $check = move_uploaded_file($source, $target);
-
+    // test to make sure physical file is saved
     $payload = [
         "imagePath" => $image_dir . "/" . $imageName,
         "imageName" => $imageName,

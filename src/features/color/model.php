@@ -65,4 +65,14 @@ class ColorModel {
             ['fetchConstant' => 'fetchAll']
         );
     }
+
+    public static function link($filtLoad) {
+        return Dispatcher::dispatch(
+            "INSERT INTO color 
+            (colorId, productId)
+            VALUES
+            (color_colorId, product_productId)",
+            $filtLoad
+        );
+    }
 }
