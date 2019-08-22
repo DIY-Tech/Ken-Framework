@@ -11,7 +11,6 @@ function ProtectedRoute({ path, isAdminPage = false, component }) {
             // https://reactjs.org/docs/react-api.html#cloneelement
             // It is allowing us to add props to a component that is passed
             // as a reference variable
-            console.log(component)
             if (accountData.isLoggedIn) {
                 if (accountData.accountType === 'admin' && isAdminPage) {
                     return <div>{React.cloneElement(component, { ...props })}</div>;

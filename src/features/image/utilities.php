@@ -1,5 +1,5 @@
 <?php
-function getAssetType($imgName) {
+function getImageType($imgName) {
   $i = strrpos($imgName, '.');
   $ext = substr($imgName, $i);
   

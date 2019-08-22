@@ -40,7 +40,12 @@ function ProductForm() {
     const [palletCount, setPalletCount] = useState("");
     const [weight, setWeight] = useState("");
 
-    function addProduct() {
+    function addProduct(e) {
+        if (
+            name === "" || price === "" || material === "" || category === "" ) {
+                e.preventDefault();
+                return;
+            }
         fetch('http://site1/server.php', {
             method: 'POST',
             headers: {
@@ -70,7 +75,7 @@ function ProductForm() {
             .then(res => res.json())
             .then(res => {
                 if (res.status === "success") {
-                    dispatch({type: "updateProduct", data:{productId: res.data.id}})    
+                    dispatch({type: "updateCurrentProduct", data:{productId: res.data.id}})    
                 
                 }
             })
@@ -92,6 +97,7 @@ function ProductForm() {
                     <div className="product__section">
                         <label className="product__label" htmlFor="">Material*</label>
                         <select className="product__input" name="" id="" onChange={e => setMaterial(e.target.value)}>
+                            <option value="">- Select -</option>
                             {materials.map(mat => (
                                 <option key={mat.materialId} value={mat.materialId}>{mat.materialName}</option>
                             ))}
@@ -100,6 +106,7 @@ function ProductForm() {
                     <div className="product__section">
                         <label className="product__label" htmlFor="">Category*</label>
                         <select className="product__input" name="" id="" onChange={e => setCategory(e.target.value)}>
+                            <option value="">- Select -</option>
                             {categories.map(cat => (
                                 <option key={cat.categoryId} value={cat.categoryId}>{cat.categoryName}</option>
                             ))}
@@ -120,6 +127,7 @@ function ProductForm() {
                     <div className="product__section">
                         <label className="product__label" htmlFor="">Bundle Type</label>
                         <select className="product__input" name="" id="" onChange={e => setBundleType(e.target.value)}>
+                            <option value="">- Select -</option>
                             <option value="single">Default</option>
                             <option value="box">Box</option>
                             <option value="bundle">Bundle</option>

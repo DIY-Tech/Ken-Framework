@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useReducer, useContext } from 'react';
 import {AppContext} from '../../../../App';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 function imageReducer(state, action) {
     switch (action.type) {
@@ -72,7 +72,18 @@ function ProductImage() {
             imageData.append('fileUpload', image);
             imageData.append('apiToken', accountData.apiToken);
             imageData.append('accountType', accountData.accountType);
+            fetch('http://site1/server.php', {method: 'POST', body: imageData,})
+            .then(res => res.json())
+            .then(res => {
+                if (res.status === "success") {
+                    console.log(res.message);
+                }
+            })
         })
+    }
+
+    if(currentProduct.productId === "" || currentProduct.productId === undefined) {
+        return <Redirect to="/Product-Form" />;
     }
 
     return (
@@ -83,7 +94,6 @@ function ProductImage() {
                         <input type="file" multiple accept="image/*" onChange={e => handleFiles(e.target.files)} />
                         <label htmlFor="">Select Images</label>
                     </form>
-                    {console.log(images)}
                     <div className="imageOutput">{previewImages.map((img, i) => {
                         return <img className="image--sml" src={img} key={i} />;
                     })}</div>

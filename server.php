@@ -27,6 +27,8 @@ $app->addController($Product);
 $app->addController($Material);
 $app->addController($Category);
 $app->addController($Color);
+$app->addController($Image);
+
 
 // start server
 $app->start();
