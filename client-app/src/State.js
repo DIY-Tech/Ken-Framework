@@ -11,7 +11,7 @@ let State = {
     products: [],
     materials: [],
     categories: [],
-    toggle: { notification: false },
+    toggle: { notification:{ open: false }},
     account: [],
     currentAccount: {
         currentAccountEditing: false

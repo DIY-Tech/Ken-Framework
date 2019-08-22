@@ -6,7 +6,7 @@ function AddDistributor() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [discount, setDiscount] = useState('');
-    const {accountData, currentAccount} = useContext(AppContext);
+    const {accountData, currentAccount, dispatch} = useContext(AppContext);
 
     function registerDistributor() {
         if(email !== '' && password !== '' && password === confirmPassword ) {
@@ -30,8 +30,9 @@ function AddDistributor() {
             })
             .then(res => res.json())
             .then(res => {
+                dispatch({type: 'updateNotification', data: {open: true, status: res.status, message: res.message}});
+                console.log(res.message);
                 if(res.status === "success") {
-                    console.log(res.data);
                 }
             });
         }
@@ -75,7 +76,7 @@ function AddDistributor() {
     return(
         <main>
             <div>
-                <form action="">
+                <form>
                     <h2>{currentAccount.currentAccountEditing ? "Update" : "Edit"} Distributor</h2>
                     <div>
                         <label htmlFor="">Distributor Email</label>
@@ -96,8 +97,7 @@ function AddDistributor() {
                     <div>
                         {currentAccount.currentAccountEditing 
                         ? <button type="button" onClick={updateDistributor}>Update Distributor</button>
-                        : <button type="button" onClick={registerDistributor}>Register Distributor</button> }
-                        
+                        : <button type="button" disabled={email === "" || password === "" || confirmPassword !== password ? true : false} onClick={registerDistributor}>Register Distributor</button> }
                     </div>
                 </form>
             </div>

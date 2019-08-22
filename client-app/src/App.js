@@ -15,6 +15,7 @@ import ProductImage from './ui/Views/Admin/ProductForm/ProductImage';
 import ProductColor from './ui/Views/Admin/ProductForm/ProductColor';
 import AddDistributor from './ui/Views/Admin/Distributors/AddDistributor';
 import ViewDistributors from './ui/Views/Admin/Distributors/ViewDistributors';
+import Notification from './ui/shared/Notification';
 
 export const AppContext = React.createContext(undefined);
 
@@ -26,6 +27,17 @@ function stateReducer(state, action) {
       return { ...state, currentProduct: action.data};
     case 'updateCurrentAccount':
       return {...state, currentAccount: action.data};
+    case 'updateNotification':
+      console.log('changeing notifiaction');
+      console.log(action.data);
+      return {...state, 
+        toggle:{ 
+          notification:{
+            open: action.data.open, 
+            status: action.data.status, 
+            message: action.data.message}
+          } 
+        }
     default:
       throw new Error();
   }
@@ -39,6 +51,7 @@ function App() {
 
     <BrowserRouter>
       <AppContext.Provider value={{ ...appState, dispatch }}>
+        {appState.toggle.notification.open ? <Notification /> : ''}
         <Header />
         <ScrollToTop>
           <Switch>
