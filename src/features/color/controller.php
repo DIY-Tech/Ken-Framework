@@ -9,7 +9,7 @@ $Color->addAction('create', function($payload){
     Controller::required(['colorHex', 'colorName'], $filtLoad);
     $createColor = ColorModel::create($filtLoad);
     if($createColor['rows'] == 1) {
-        return Resposne::data($createColor, "Color created successfully!");
+        return Response::data($createColor, "Color created successfully!");
     } else {
         return Response::err('Failed to create new color.');
     }

@@ -41,7 +41,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/material/model.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/category/controller.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/category/model.php';
 
+// Color
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/color/controller.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/color/model.php';
+
 // Image
-// require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/category/controller.php';
-// require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/category/model.php';
-// require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/category/utilities.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/image/controller.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/image/model.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/src/features/image/utilities.php';
