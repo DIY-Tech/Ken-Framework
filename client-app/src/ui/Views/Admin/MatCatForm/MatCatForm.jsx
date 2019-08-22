@@ -25,7 +25,7 @@ function MatCatForm() {
             .then(res => res.json())
             .then(res => {
                 if(res.status === "success") {
-
+                    setMaterialName('');
                 }
             })
         }
@@ -50,7 +50,7 @@ function MatCatForm() {
             .then(res => res.json())
             .then(res => {
                 if(res.status === "success") {
-                    
+                   setCategoryName(''); 
                 }
             })
         }
@@ -77,6 +77,8 @@ function MatCatForm() {
             .then(res => {
                 if(res.status === "success") {
                     console.log(res.message);
+                    setColorHex('');
+                    setColorName('');
                 }
             })
         }
