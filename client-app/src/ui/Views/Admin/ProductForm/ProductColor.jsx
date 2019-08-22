@@ -27,8 +27,8 @@ function ProductColor() {
     }
 
     function addColors() {
-        selectedColors.forEach(color => {
-        fetch('http://site1/server.php', {
+        selectedColors.forEach(colorId => {
+            fetch('http://site1/server.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ function ProductColor() {
                 controller: "color",
                 action: 'link',
                 payload: {
-                  colorId: color.colorId,
+                  colorId: colorId,
                   productId: currentProduct.productId,
                   apiToken: accountData.apiToken
                 }
@@ -47,7 +47,7 @@ function ProductColor() {
         .then(res => res.json())
         .then(res => {
                 if (res.status === "success") {
-                    dispatch({type: "updateCurrentProduct", data:{productId: res.data.id}})    
+                        
                 }
             })
         }

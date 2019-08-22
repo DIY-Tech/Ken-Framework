@@ -1,31 +1,29 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { AppContext } from '../../../../App';
 import ProductImage from './ProductImage';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
-function ProductForm() {
+function ProductForm({history}) {
     const { accountData, dispatch } = useContext(AppContext);
     const [materials, setMaterials] = useState([]);
     const [categories, setCategories] = useState([]);
 
-    useEffect(
-        () => {
-            fetch('http://site1/server.php?controller=material&action=getAll')
-                .then(res => res.json())
-                .then(res => {
-                    if (res.status === "success") {
-                        setMaterials(res.data);
-                    }
-                })
-            fetch('http://site1/server.php?controller=category&action=getAll')
-                .then(res => res.json())
-                .then(res => {
-                    if (res.status === "success") {
-                        setCategories(res.data);
-                    }
-                })
-        }, []
-    )
+    useEffect(() => {
+        fetch('http://site1/server.php?controller=material&action=getAll')
+            .then(res => res.json())
+            .then(res => {
+                if (res.status === "success") {
+                    setMaterials(res.data);
+                }
+            })
+        fetch('http://site1/server.php?controller=category&action=getAll')
+            .then(res => res.json())
+            .then(res => {
+                if (res.status === "success") {
+                    setCategories(res.data);
+                }
+            })
+    }, [])
 
 
     const [name, setName] = useState("");
@@ -75,14 +73,15 @@ function ProductForm() {
             .then(res => res.json())
             .then(res => {
                 if (res.status === "success") {
-                    dispatch({type: "updateCurrentProduct", data:{productId: res.data.id}})    
-                
+                    dispatch({type: "updateCurrentProduct", data:{productId: res.data.id}});
+                    history.push("/Add-Images");
                 }
             })
     }
 
     return (
         <main>
+            {console.log("rendered")}
             <div className="product__container">
             <form>
                     <h1 className="product__heading">Add New Product</h1>
@@ -146,7 +145,7 @@ function ProductForm() {
                         <input className="product__input" type="number" min="1" onChange={e => setWeight(e.target.value)} />
                     </div>
                     <p className="product__required">*required fields</p>
-                    <Link className="product__button" onClick={addProduct} to="/Add-Images">Next</Link>
+                    <button type="button" className="product__button" onClick={addProduct}>Next</button>
                 </form>
             </div>
         </main>

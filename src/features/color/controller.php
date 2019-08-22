@@ -36,7 +36,7 @@ $Color->addAction('delete', function($payload) {
 
 $Color->addAction('link', function($payload) {
     $filtLoad = Controller::filterPayload($payload);
-    Controller::required(['colorId', 'productId']);
+    Controller::required(['colorId', 'productId'], $filtLoad);
     $linked = ColorModel::link($filtLoad);
     if($linked == 1) {
         return Response::success("Color linked to product");

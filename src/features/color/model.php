@@ -68,10 +68,10 @@ class ColorModel {
 
     public static function link($filtLoad) {
         return Dispatcher::dispatch(
-            "INSERT INTO color 
-            (colorId, productId)
+            "INSERT INTO product_has_color 
+            (color_colorId, product_productId)
             VALUES
-            (color_colorId, product_productId)",
+            (:colorId, :productId)",
             $filtLoad
         );
     }
