@@ -39,9 +39,6 @@ class ProductModel {
             $dynamicField .= ", productGage";
             $dynamicValue .= ", :productGage";
         }
-        // var_dump($dynamicValue);
-        // echo($dynamicValue);
-        // return;
 
         return Dispatcher::dispatch (
             "INSERT INTO product

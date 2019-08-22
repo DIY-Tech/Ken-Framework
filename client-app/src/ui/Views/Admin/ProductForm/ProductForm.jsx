@@ -4,7 +4,7 @@ import ProductImage from './ProductImage';
 import { Link } from 'react-router-dom';
 
 function ProductForm() {
-    const { accountData } = useContext(AppContext);
+    const { accountData, dispatch } = useContext(AppContext);
     const [materials, setMaterials] = useState([]);
     const [categories, setCategories] = useState([]);
 
@@ -70,7 +70,8 @@ function ProductForm() {
             .then(res => res.json())
             .then(res => {
                 if (res.status === "success") {
-                    console.log(res.data);
+                    dispatch({type: "updateProduct", data:{productId: res.data.id}})    
+                
                 }
             })
     }
@@ -140,7 +141,6 @@ function ProductForm() {
                     <Link className="product__button" onClick={addProduct} to="/Add-Images">Next</Link>
                 </form>
             </div>
-            <ProductImage />
         </main>
     );
 };

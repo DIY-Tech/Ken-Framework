@@ -13,6 +13,7 @@ let State = {
     categories: [],
     toggle: { notification: false },
     account: [],
+    currentProduct: {}
 };
 
 export default State;

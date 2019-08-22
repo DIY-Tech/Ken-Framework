@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect, useReducer, useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 function imageReducer(state, action) {
-    switch(action.type) {
+    switch (action.type) {
         case 'addImage':
             return [...state, action.data];
         default:
@@ -10,29 +11,30 @@ function imageReducer(state, action) {
 }
 
 function ProductImage() {
-    
+
     const [previewImages, dispatch] = useReducer(imageReducer, []);
     const [images, setImages] = useState([]);
-    
-    function dragEnter(e) { 
+    const {accountData, currentProduct} = useContext(AppContext);
+
+    function dragEnter(e) {
         console.log("enter")
         e.preventDefault();
         e.stopPropagation();
     }
 
-    function dragOver(e) { 
+    function dragOver(e) {
         console.log("over")
         e.preventDefault();
         e.stopPropagation();
     }
 
-    function dragLeave(e) { 
+    function dragLeave(e) {
         console.log("leave")
         e.preventDefault();
         e.stopPropagation();
     }
 
-    function drop(e) { 
+    function drop(e) {
         console.log("drop")
         e.preventDefault();
         e.stopPropagation();
@@ -41,7 +43,7 @@ function ProductImage() {
         handleFiles(files);
     }
 
-    
+
     function previewFile(file) {
         let imgSrc = URL.createObjectURL(file);
         console.log(imgSrc);
@@ -50,7 +52,7 @@ function ProductImage() {
 
     function addImageToPreview(img) {
         console.log(previewImages);
-        dispatch({type: 'addImage', data: img});
+        dispatch({ type: 'addImage', data: img });
     }
 
     function handleFiles(files) {
@@ -60,19 +62,35 @@ function ProductImage() {
         })
     }
 
+    function uploadImages() {
+        images.forEach(image => {
+            let imageData = new FormData();
+            imageData.append('controller', "image");
+            imageData.append('action', "upload");
+            imageData.append('productId', currentProduct.productId);
+            imageData.append('fileUpload', image);
+            imageData.append('apiToken', accountData.apiToken);
+            imageData.append('accountType', accountData.accountType);
+        })
+    }
+
     return (
-        <div className="image__dragArea" onDragEnter={dragEnter} onDragOver={dragOver} onDragLeave={dragLeave} onDrop={drop}>
-         {/* <div className="image__dragArea"> */}
-            <form action="">
-                <p></p>
-                <input type="file" multiple accept="image/*" onChange={e => handleFiles(e.target.files)} />
-                <label htmlFor="">Select Images</label>
-            </form>
-            {console.log(images)}
-            <div className="imageOutput">{previewImages.map((img, i) => {
-               return <img className="image--sml" src={img} key={i} />;
-            })}</div>
-        </div>
+        <main>
+            <div className="image__container">
+                <div className="image__dragArea" onDragEnter={dragEnter} onDragOver={dragOver} onDragLeave={dragLeave} onDrop={drop}>
+                    <form action="">
+                        <input type="file" multiple accept="image/*" onChange={e => handleFiles(e.target.files)} />
+                        <label htmlFor="">Select Images</label>
+                    </form>
+                    {console.log(images)}
+                    <div className="imageOutput">{previewImages.map((img, i) => {
+                        return <img className="image--sml" src={img} key={i} />;
+                    })}</div>
+                </div>
+                <button onClick={uploadImages}>Upload</button>
+                <Link to="/Add-Colors">Next</Link>
+            </div>
+        </main>
     )
 }
 

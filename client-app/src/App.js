@@ -11,6 +11,7 @@ import AdminDashboard from './ui/Views/Admin/AdminDashboard/AdminDashboard';
 import ProtectedRoute from './ui/static/ProtectedRoute';
 import MatCatForm from './ui/Views/Admin/MatCatForm/MatCatForm';
 import ProductForm from './ui/Views/Admin/ProductForm/ProductForm';
+import ProductImage from './ui/Views/Admin/ProductForm/ProductImage';
 
 export const AppContext = React.createContext(undefined);
 
@@ -18,6 +19,8 @@ function stateReducer(state, action) {
   switch (action.type) {
     case 'updateAccountData':
       return { ...state, accountData: action.data };
+    case 'updateCurrentProduct':
+      return { ...state, currentProduct: action.data};
     default:
       throw new Error();
   }
@@ -39,6 +42,7 @@ function App() {
             <ProtectedRoute isAdminPage={true} path="/Admin-Dashboard" component={<AdminDashboard />} />
             <ProtectedRoute isAdminPage={true} path="/Add-Material-Category" component={<MatCatForm />} />
             <ProtectedRoute isAdminPage={true} path="/Product-Form" component={<ProductForm />} />
+            <ProtectedRoute isAdminPage={true} path="/Add-Images" component={<ProductImage />} />
           </Switch>
           <Footer />
         </ScrollToTop>
