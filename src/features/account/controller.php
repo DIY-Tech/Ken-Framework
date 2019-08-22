@@ -26,7 +26,11 @@ $Account->addAction('create', function($payload) {
 
     $filtLoad['accountEmail'] = sanEmail($filtLoad['accountEmail']);
 
-    // check to insure no account exists with that email already
+    $accountDataFromEmail = AccountModel::getAccountByEmail($filtLoad);
+
+    if($accountDataFromEmail['accountId']) {
+      return Response::err('That email is already registered with an account');
+    }
 
     $filtLoad['accountPasswordHash'] = password_hash($filtLoad['accountPassword'], PASSWORD_DEFAULT);
 

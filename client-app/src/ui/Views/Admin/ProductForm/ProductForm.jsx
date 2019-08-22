@@ -75,6 +75,8 @@ function ProductForm({history}) {
                 if (res.status === "success") {
                     dispatch({type: "updateCurrentProduct", data:{productId: res.data.id}});
                     history.push("/Add-Images");
+                } else {
+                    dispatch({type: "updateNotification", data:{open: true, status: res.status, message: res.message}});
                 }
             })
     }

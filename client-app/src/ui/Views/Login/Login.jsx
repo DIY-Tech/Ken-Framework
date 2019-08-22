@@ -13,9 +13,11 @@ function Login() {
     function validation() {
         if (email === "" || password === "") {
             setEmessage("Please fill in both fields");
+            dispatch({type: 'updateNotification', data: {open: true, status: "failure", message: "Please fill in both fields"}})
             return false;
         } else if (!email.match(emailFormat)) {
-            setEmessage("Please enter a valid email")
+            setEmessage("Please enter a valid email");
+            dispatch({type: 'updateNotification', data: {open: true, status: "failure", message: "Please enter a valid email"}})
             return false;
         } else {
             setEmessage("");
@@ -38,6 +40,7 @@ function Login() {
             })
         }).then(res => res.json())
         .then(res => {
+            dispatch({type: 'updateNotification', data: {open: true, status: res.status, message: res.message}})
             if (res.status === "success") {
                 let data = res.data;
                 data.isLoggedIn = true;
