@@ -52,19 +52,18 @@
 
 .login__submit-button {
     text-decoration: none;
-    color: $thm-grey;
-    border: 2px solid $thm-grey;
+    color: $thm-blue;
+    border: 2px solid $thm-blue;
     padding: 5px 15px 5px 15px;
     border-radius: 15px;
     font-size: $thm-font-medlrg;
-    background-color: $thm-lightgrey;
+    background-color: $thm-white;
     margin: 10px 0px 10px 0px;
     &:hover {
-        color: $thm-blue;
+        color: $thm-grey;
+        border-color: $thm-grey;
     } &:active {
-        color: $thm-blue;
-        background-color: $thm-grey;
-        border-color: $thm-blue;
+        background-color: $thm-lightblue;
     }
 }
 

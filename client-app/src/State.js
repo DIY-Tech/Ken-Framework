@@ -1,6 +1,6 @@
 let State = {
     accountData: {
-        isLoggedIn: true,
+        isLoggedIn: false,
         accountCreated: "2019-08-20 14:29:31",
         accountDiscount: ".25",
         accountEmail: "matthew@test.com",

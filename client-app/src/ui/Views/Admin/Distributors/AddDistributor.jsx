@@ -75,29 +75,29 @@ function AddDistributor() {
 
     return(
         <main>
-            <div>
-                <form>
+            <div className="edist__container">
+                <form className="edist__form">
                     <h2>{currentAccount.currentAccountEditing ? "Update" : "Edit"} Distributor</h2>
-                    <div>
-                        <label htmlFor="">Distributor Email</label>
-                        <input defaultValue={email} onChange={e => setEmail(e.target.value)} type="email"/>
+                    <div className="edist__input-container">
+                        <label className="edist__input-label" htmlFor="">Distributor Email</label>
+                        <input className="edist__input" defaultValue={email} onChange={e => setEmail(e.target.value)} type="email"/>
                     </div>
-                    <div>
-                        <label htmlFor="">Distributor Password</label>
-                        <input defaultValue={password} onChange={e => setPassword(e.target.value)} type="password"/>
+                    <div className="edist__input-container">
+                        <label className="edist__input-label" htmlFor="">Distributor Password</label>
+                        <input className="edist__input" defaultValue={password} onChange={e => setPassword(e.target.value)} type="password"/>
                     </div>
-                    <div>
-                        <label htmlFor="">Confirm Password</label>
-                        <input defaultValue={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} type="password"/>
+                    <div className="edist__input-container">
+                        <label className="edist__input-label" htmlFor="">Confirm Password</label>
+                        <input className="edist__input" defaultValue={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} type="password"/>
                     </div>
-                    <div>
-                        <label htmlFor="">Distributor Discount</label>
-                        <input defaultValue={discount} onChange={e => setDiscount(e.target.value)} type="number" min="0" max="1" step="0.01"/>
+                    <div className="edist__input-container">
+                        <label className="edist__input-label" htmlFor="">Distributor Discount</label>
+                        <input className="edist__input" defaultValue={discount} onChange={e => setDiscount(e.target.value)} type="number" min="0" max="1" step="0.01"/>
                     </div>
-                    <div>
+                    <div className="edist__button-container">
                         {currentAccount.currentAccountEditing 
-                        ? <button type="button" onClick={updateDistributor}>Update Distributor</button>
-                        : <button type="button" disabled={email === "" || password === "" || confirmPassword !== password ? true : false} onClick={registerDistributor}>Register Distributor</button> }
+                        ? <button className="edist__button-container" type="button" onClick={updateDistributor}>Update Distributor</button>
+                        : <button className="edist__button-container" type="button" disabled={email === "" || password === "" || confirmPassword !== password ? true : false} onClick={registerDistributor}>Register Distributor</button> }
                     </div>
                 </form>
             </div>
