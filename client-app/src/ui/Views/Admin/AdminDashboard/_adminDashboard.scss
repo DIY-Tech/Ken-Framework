@@ -32,20 +32,21 @@
 }
 
 .admin__option {
-    border: 2px solid $thm-blue;
-    background-color: $thm-lightgrey;
-    color: $thm-grey;
     text-decoration: none;
-    padding: 5px;
-    width: 200px;
-    margin: 5px;
-    text-align: center;
+    color: $thm-blue;
+    border: 2px solid $thm-blue;
+    padding: 5px 15px 5px 15px;
+    border-radius: 5px;
     font-size: $thm-font-lrg;
+    background-color: $thm-white;
+    text-align: center;
+    margin: 5px;
+    width: 200px;
     &:hover {
-        background-color: $thm-grey;
-        color: $thm-blue;
+        color: $thm-grey;
+        background-color: $thm-lightgrey;
+        border-color: $thm-grey;
     } &:active {
-        color: $thm-blue;
-        background-color: $thm-white;
+        background-color: $thm-lightblue;
     }
 }

@@ -1,0 +1,72 @@
+.adist__heading-container {
+    @include flex(row, nowrap, center, center);
+    height: 150px;
+    width: 100vw;
+    background-color: $thm-lightgrey;
+    animation: fade 5s linear infinite;
+    margin-bottom: 5px;
+}
+
+.adist__accounts-container {
+    text-align: center;
+    @include flex(column, nowrap, center, center);
+}
+
+.adist__account-container {
+    border: solid 2px $thm-blue;
+    width: 315px;
+    margin: 5px;
+    padding: 10px;
+    background-color: $thm-lightgrey;
+    color: $thm-grey;
+    @include bp($thm-bp-med) {
+        font-size: $thm-font-medlrg;
+        width: 450px;
+    } @include bp($thm-bp-lrg) {
+        width: calc(100vw - 50px);
+        @include flex(row, nowrap, space-between, center);
+    }
+}
+
+.adist__account-heading {
+    color: $thm-black;
+    margin: 5px;
+    @include bp($thm-bp-lrg) {
+    width: 25%;
+    text-align: left;
+    }
+}
+
+.adist__account-type, .adist__account-disc {
+    margin: 5px;
+    @include bp($thm-bp-lrg) {
+    width: 25%;
+    text-align: left;
+    }
+}
+
+.adist__button-container {
+    @include bp($thm-bp-lrg) {
+    width: 25%;
+    text-align: left;
+    }
+}
+
+.adist__button {
+    text-decoration: none;
+    color: $thm-blue;
+    border: 2px solid $thm-blue;
+    padding: 5px 15px 5px 15px;
+    border-radius: 15px;
+    font-size: $thm-font-medlrg;
+    background-color: $thm-white;
+    text-align: center;
+    margin: 5px;
+    &:hover {
+        color: $thm-grey;
+        background-color: $thm-lightgrey;
+        border-color: $thm-grey;
+    } &:active {
+        background-color: $thm-lightblue;
+    }
+}

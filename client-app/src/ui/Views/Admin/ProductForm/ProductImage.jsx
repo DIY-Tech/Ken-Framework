@@ -90,16 +90,18 @@ function ProductImage() {
         <main>
             <div className="image__container">
                 <div className="image__dragArea" onDragEnter={dragEnter} onDragOver={dragOver} onDragLeave={dragLeave} onDrop={drop}>
-                    <form action="">
-                        <input type="file" multiple accept="image/*" onChange={e => handleFiles(e.target.files)} />
-                        <label htmlFor="">Select Images</label>
+                    <form className="image__form" action="">
+                        <input type="file" multiple accept="image/*" id="fileUpload" onChange={e => handleFiles(e.target.files)} />
+                        <label htmlFor="fileUpload">Select or Drag Images</label>
                     </form>
                     <div className="imageOutput">{previewImages.map((img, i) => {
                         return <img className="image--sml" src={img} key={i} />;
                     })}</div>
                 </div>
-                <button onClick={uploadImages}>Upload</button>
-                <Link to="/Add-Colors">Next</Link>
+                <div className="image__button-container">
+                    <button className="image__button-upload"  onClick={uploadImages}>Upload</button>
+                    <Link className="image__button-next" to="/Add-Colors">Next</Link>
+                </div>
             </div>
         </main>
     )

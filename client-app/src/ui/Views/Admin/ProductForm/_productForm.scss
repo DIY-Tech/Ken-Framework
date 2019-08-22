@@ -12,8 +12,6 @@
         height: 700px;
         margin: 100px 300px 100px 300px;
     }
-    // margin: 100px;
-    // width: 320px;
 }
 
 .product__heading {
@@ -52,19 +50,23 @@
 
 .product__button {
     text-decoration: none;
-    color: $thm-grey;
-    border: 2px solid $thm-grey;
+    color: $thm-blue;
+    border: 2px solid $thm-blue;
     padding: 5px 15px 5px 15px;
-    border-radius: 15px;
+    border-radius: 5px;
     font-size: $thm-font-medlrg;
-    background-color: $thm-lightgrey;
-    margin-left: 40%;
+    background-color: $thm-white;
     text-align: center;
+    margin: 5px;
+    margin-left: 40%;
+    @include bp($thm-bp-xlrg) {
+        font-size: $thm-font-lrg;
+    }
     &:hover {
-        color: $thm-blue;
+        color: $thm-grey;
+        background-color: $thm-lightgrey;
+        border-color: $thm-grey;
     } &:active {
-        color: $thm-blue;
-        background-color: $thm-grey;
-        border-color: $thm-blue;
+        background-color: $thm-lightblue;
     }
 }

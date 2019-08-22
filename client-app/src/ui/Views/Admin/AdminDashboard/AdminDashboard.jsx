@@ -19,8 +19,7 @@ function AdminDashboard() {
                         <h2 className="admin__section-heading">Manage Products</h2>
                         <Link className="admin__option" to="/Product-Form">Add Product</Link>
                         <Link className="admin__option" to="/">View Products</Link>
-                        <Link className="admin__option" to="/Add-Material-Category">Add Material</Link>
-                        <Link className="admin__option" to="/Add-Material-Category">Add Category</Link>
+                        <Link className="admin__option" to="/Add-Material-Category">Add Materials, Categories, Colors</Link>
                     </div>
                 </div>
             </div>

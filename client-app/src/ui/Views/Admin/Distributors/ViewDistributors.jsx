@@ -56,19 +56,20 @@ function ViewDistributors({history}) {
         })
     }
     
-    return(<main>
-        <div>
-            <h1>All accounts</h1>
+    return(
+    <main>
+        <div className="adist__heading-container">
+            <h1 className="adist__heading">All Distributors</h1>
         </div>
-        <section>
+        <section className="adist__accounts-container">
             {accounts ? accounts.map(account => (
-                <div key={account.accountId}>
-                    <h3>{account.accountEmail}</h3>
-                    <span>{account.accountType}</span>
-                    <div>{account.accountDiscount}</div>
-                    <div>
-                        <button type="button" value={account.accountId} onClick={editAccount}>Edit</button>
-                        <button type="button" value={account.accountId} onClick={deleteAccount}>Delete</button>
+                <div key={account.accountId} className="adist__account-container">
+                    <h3 className="adist__account-heading">{account.accountEmail}</h3>
+                    <span className="adist__account-type">Account Type: {account.accountType}</span>
+                    <div className="adist__account-disc">Discount: {account.accountDiscount}</div>
+                    <div className="adist__button-container">
+                        <button className="adist__button" type="button" value={account.accountId} onClick={editAccount}>Edit</button>
+                        <button className="adist__button" type="button" value={account.accountId} onClick={deleteAccount}>Delete</button>
                     </div>
                 </div>
             )): ''}

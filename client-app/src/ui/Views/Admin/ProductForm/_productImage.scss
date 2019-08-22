@@ -1,9 +1,77 @@
+.image__container {
+    @include flex(column, nowrap, center, center);
+    text-align: center;
+    height: 100vh;
+}
+
 .image__dragArea {
-    height: 150px;
-    width: 150px;
-    background-color: $thm-grey;
+    height: 300px;
+    width: 300px;
+    border: dashed 3px $thm-grey;
+    background-color: $thm-lightgrey;
+    @include flex(column, nowrap, center, center);
+    @include bp($thm-bp-med) {
+        height: 500px;
+        width: 500px;
+        font-size: $thm-font-lrg;
+    } @include bp($thm-bp-xlrg) {
+        height: 600px;
+        width: 600px;
+    }
+}
+
+#fileUpload {
+    display: none;
 }
 
 .image--sml {
     width: 100px;
+}
+
+.image__form > label {
+    &:hover {
+        color: $thm-blue;
+        cursor: pointer;
+    }
+}
+
+.image__button-upload {
+    text-decoration: none;
+    color: $thm-lightblue;
+    border: 2px solid $thm-blue;
+    padding: 5px 15px 5px 15px;
+    border-radius: 5px;
+    font-size: $thm-font-medlrg;
+    background-color: $thm-grey;
+    text-align: center;
+    margin: 5px;
+    width: 100px;
+    &:hover {
+        color: $thm-blue;
+        background-color: $thm-grey;
+        border-color: $thm-blue;
+    } &:active {
+        background-color: $thm-lightblue;
+    }
+}
+
+.image__button-next {
+    text-decoration: none;
+    color: $thm-blue;
+    border: 2px solid $thm-blue;
+    padding: 5px 15px 5px 15px;
+    border-radius: 15px;
+    font-size: $thm-font-medlrg;
+    background-color: $thm-lightgrey;
+    text-align: center;
+    margin: 10px;
+    width: 100px;
+    display: inline-block;
+    &:hover {
+        color: $thm-grey;
+        background-color: $thm-lightgrey;
+        border-color: $thm-grey;
+    } &:active {
+        background-color: $thm-lightblue;
+    }
 }
