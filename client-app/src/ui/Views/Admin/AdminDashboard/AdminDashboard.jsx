@@ -12,8 +12,8 @@ function AdminDashboard() {
                 <div className="admin__option-container">
                     <div className="admin__section-option-container">
                         <h2 className="admin__section-heading">Manage Users</h2>
-                        <Link className="admin__option" to="/">Add User</Link>
-                        <Link className="admin__option" to="/">View Users</Link>
+                        <Link className="admin__option" to="/Add-Distributor">Add User</Link>
+                        <Link className="admin__option" to="/View-Distributors">View Users</Link>
                     </div>
                     <div className="admin__section-option-container">
                         <h2 className="admin__section-heading">Manage Products</h2>

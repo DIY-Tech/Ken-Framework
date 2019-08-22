@@ -13,6 +13,8 @@ import MatCatForm from './ui/Views/Admin/MatCatForm/MatCatForm';
 import ProductForm from './ui/Views/Admin/ProductForm/ProductForm';
 import ProductImage from './ui/Views/Admin/ProductForm/ProductImage';
 import ProductColor from './ui/Views/Admin/ProductForm/ProductColor';
+import AddDistributor from './ui/Views/Admin/Distributors/AddDistributor';
+import ViewDistributors from './ui/Views/Admin/Distributors/ViewDistributors';
 
 export const AppContext = React.createContext(undefined);
 
@@ -45,6 +47,8 @@ function App() {
             <ProtectedRoute isAdminPage={true} path="/Product-Form" component={<ProductForm />} />
             <ProtectedRoute isAdminPage={true} path="/Add-Images" component={<ProductImage />} />
             <ProtectedRoute isAdminPage={true} path="/Add-Colors" component={<ProductColor />} />
+            <ProtectedRoute isAdminPage={true} path="/Add-Distributor" component={<AddDistributor />} />
+            <ProtectedRoute isAdminPage={true} path="/View-Distributors" component={<ViewDistributors />} />
           </Switch>
           <Footer />
         </ScrollToTop>
