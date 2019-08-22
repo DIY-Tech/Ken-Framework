@@ -1,8 +1,8 @@
 import React, {useState, useEffect, useContext} from 'react';
 import { AppContext } from '../../../../App';
 
-function ViewDistributors() {
-    const { accountData } = useContext(AppContext);
+function ViewDistributors({history}) {
+    const { accountData, dispatch } = useContext(AppContext);
     const [accounts, setAccounts] = useState([]);
     
     useEffect(() => {
@@ -44,6 +44,18 @@ function ViewDistributors() {
             }
         })
     }
+
+    function editAccount(e) {
+        fetch("http://site1/server.php?controller=account&action=getOne&apiToken=" + accountData.apiToken + "&accountType=" + accountData.accountType + "&accountId=" + e.target.value)
+        .then(res =>  res.json())
+        .then(res => {
+            if(res.status === "success") {
+                dispatch({type: "updateCurrentAccount", data: {...res.data, currentAccountEditing: true}});
+                history.push("/Add-Distributor");
+            }
+        })
+    }
+    
     return(<main>
         <div>
             <h1>All accounts</h1>
@@ -55,7 +67,7 @@ function ViewDistributors() {
                     <span>{account.accountType}</span>
                     <div>{account.accountDiscount}</div>
                     <div>
-                        <button type="button" value={account.accountId}>Edit</button>
+                        <button type="button" value={account.accountId} onClick={editAccount}>Edit</button>
                         <button type="button" value={account.accountId} onClick={deleteAccount}>Delete</button>
                     </div>
                 </div>

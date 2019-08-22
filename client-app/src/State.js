@@ -13,6 +13,9 @@ let State = {
     categories: [],
     toggle: { notification: false },
     account: [],
+    currentAccount: {
+        currentAccountEditing: false
+    },
     currentProduct: {}
 };
 

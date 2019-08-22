@@ -24,6 +24,8 @@ function stateReducer(state, action) {
       return { ...state, accountData: action.data };
     case 'updateCurrentProduct':
       return { ...state, currentProduct: action.data};
+    case 'updateCurrentAccount':
+      return {...state, currentAccount: action.data};
     default:
       throw new Error();
   }

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { AppContext } from '../../../../App';
 
 function AddDistributor() {
@@ -6,7 +6,7 @@ function AddDistributor() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [discount, setDiscount] = useState('');
-    const {accountData} = useContext(AppContext);
+    const {accountData, currentAccount} = useContext(AppContext);
 
     function registerDistributor() {
         if(email !== '' && password !== '' && password === confirmPassword ) {
@@ -37,11 +37,46 @@ function AddDistributor() {
         }
     }
 
+    function updateDistributor() {
+            fetch('http://site1/server.php', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                },
+                body: JSON.stringify({
+                    controller: 'account',
+                    action: 'update',
+                    payload: {
+                        accountId: currentAccount.accountId,
+                        accountEmail: email,
+                        accountPassword: password,
+                        accountDiscount: discount,
+                        apiToken: accountData.apiToken,
+                        accountType: accountData.accountType
+                    }
+                }),
+            })
+            .then(res => res.json())
+            .then(res => {
+                if(res.status === "success") {
+                    console.log(res.message);
+                }
+            });
+    }
+
+    useEffect(() =>{
+        if(currentAccount.currentAccountEditing) {
+            setEmail(currentAccount.accountEmail);
+            setDiscount(currentAccount.accountDiscount);
+        }
+    }, []);
+
     return(
         <main>
             <div>
                 <form action="">
-                    <h2>Add Distributor</h2>
+                    <h2>{currentAccount.currentAccountEditing ? "Update" : "Edit"} Distributor</h2>
                     <div>
                         <label htmlFor="">Distributor Email</label>
                         <input defaultValue={email} onChange={e => setEmail(e.target.value)} type="email"/>
@@ -59,7 +94,10 @@ function AddDistributor() {
                         <input defaultValue={discount} onChange={e => setDiscount(e.target.value)} type="number" min="0" max="1" step="0.01"/>
                     </div>
                     <div>
-                        <button type="button" onClick={registerDistributor}>Register Distributor</button>
+                        {currentAccount.currentAccountEditing 
+                        ? <button type="button" onClick={updateDistributor}>Update Distributor</button>
+                        : <button type="button" onClick={registerDistributor}>Register Distributor</button> }
+                        
                     </div>
                 </form>
             </div>
