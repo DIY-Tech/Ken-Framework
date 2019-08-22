@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useReducer, useContext } from 'react';
+import {AppContext} from '../../../../App';
 import { Link } from 'react-router-dom';
 
 function imageReducer(state, action) {

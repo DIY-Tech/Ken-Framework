@@ -3,6 +3,8 @@ import React, {useContext, useState} from 'react';
 function MatCatForm() {
     const [materialName, setMaterialName] = useState('');
     const [categoryName, setCategoryName] = useState('');
+    const [colorName, setColorName] = useState('');
+    const [colorHex, setColorHex] = useState('');
 
     function AddMaterial() {
         if(materialName !== "") {
@@ -54,6 +56,32 @@ function MatCatForm() {
         }
     }
 
+    function AddColor() {
+        if(colorName !== "" && colorHex !== "") {
+            fetch('http://site1/server.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    controller: "color",
+                    action: "create",
+                    payload: {
+                        colorName: colorName,
+                        colorHex: colorHex
+                    }
+                })
+            })
+            .then(res => res.json())
+            .then(res => {
+                if(res.status === "success") {
+                    console.log(res.message);
+                }
+            })
+        }
+    }
+
     return (
         <main>
             <h1>Add material or category</h1>
@@ -76,6 +104,20 @@ function MatCatForm() {
                     </div>
                     <div>
                         <button type="button" onClick={AddCategory}>Add</button>
+                    </div>
+                </form>
+                <form action="">
+                    <h2>New Color</h2>
+                    <div>
+                        <label htmlFor="">Color Name</label>
+                        <input value={colorName} onChange={e => setColorName(e.target.value)} type="text"/>
+                    </div>
+                    <div>
+                        <label htmlFor="">Color Hex</label>
+                        <input value={colorHex} onChange={e => setColorHex(e.target.value)} type="text"/>
+                    </div>
+                    <div>
+                        <button type="button" onClick={AddColor}>Add</button>
                     </div>
                 </form>
             </section>
