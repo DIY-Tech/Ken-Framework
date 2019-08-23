@@ -34,7 +34,15 @@ $Product->addAction('getOne', function($payload){
 });
 
 $Product->addAction('getAll', function($payload){
-    return Response::data(ProductModel::getAll($payload), "All Products");
+    $products = ProductModel::getAll($payload);
+    $alteredProducts = [];
+    foreach($products As $prod) {
+        $prod['images'] = ImageModel::getByProductId(['productId' => $prod['productId']]);
+        $prod['colors'] = ColorModel::getByProductId(['productId' => $prod['productId']]);
+        // echo(json_encode($prod));
+        array_push($alteredProducts, $prod);
+    }
+    return Response::data($alteredProducts, "All Products");
 });
 
 $Product->addAction('getByCategory', function($payload) {

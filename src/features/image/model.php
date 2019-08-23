@@ -13,7 +13,7 @@ class ImageModel {
     }
     public static function getByProductId($filtLoad) {
         return Dispatcher::dispatch(
-            "SELECT * FROM image WHERE product_productId = productId",
+            "SELECT * FROM image WHERE product_productId = :productId",
             $filtLoad,
             ['fetchConstant' => 'fetchAll']
         );

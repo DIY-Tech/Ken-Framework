@@ -57,9 +57,9 @@ class ColorModel {
             "SELECT col.colorName, col.colorHex
             FROM product as prod
             INNER JOIN product_has_color AS phc
-            ON prod.productId == phc.product_productId
+            ON prod.productId = phc.product_productId
             INNER JOIN color as col
-            ON phc.color_colorId = color.colorId
+            ON phc.color_colorId = col.colorId
             WHERE prod.productId = :productId",
             $filtLoad,
             ['fetchConstant' => 'fetchAll']
