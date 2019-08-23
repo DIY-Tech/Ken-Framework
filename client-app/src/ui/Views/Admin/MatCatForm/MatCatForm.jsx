@@ -91,6 +91,7 @@ function MatCatForm() {
 
     return (
         <main>
+            <div className="matcat__container"></div>
             <h1>Add material or category</h1>
             <section>
                 <form action="">
