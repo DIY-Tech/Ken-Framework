@@ -1,0 +1,23 @@
+.notification {
+    @include flex(row, nowrap, space-between, flex-start);
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    max-width: 500px;
+    padding: 1rem;
+    z-index: 10;
+}
+
+.notification--success {
+    background-color: greenyellow;
+}
+
+.notification--failure {
+    background-color: firebrick;
+    color: white;
+}
+
+.notification__close {
+    margin-left: 1rem;
+    cursor: pointer;
+}

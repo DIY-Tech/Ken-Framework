@@ -38,9 +38,8 @@ function ViewDistributors({history}) {
         })
         .then(res => res.json())
         .then(res => {
-            console.log(res);
+            dispatch({type: 'updateNotification', data: {open: true, status: res.status, message: res.message}});
             if(res.status === "success") {
-                console.log('accessed')
                 getAccounts();
             }
         })
