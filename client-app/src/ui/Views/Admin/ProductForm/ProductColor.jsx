@@ -56,20 +56,20 @@ function ProductColor() {
         
     return(
         <main>
-            <div>
-                <form>
-                    <h2>Product Colors</h2>
-                    <div>
+            <div className="color__container">
+                <form className="color__form">
+                    <h2 className="color__heading">Product Colors</h2>
+                    <div className="color__list">
                         {colors.map(color => (
-                            <div key={color.colorId}>
-                                <input id={color.colorId} value={color.colorId} onChange={toggleColor} type="checkbox"/>
-                                <label htmlFor={color.colorId}>{color.colorName}</label>
-                                <div style={{backgroundColor: color.colorHex, height: "40px", width: "40px", display: "inline-block", boxShadow: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)" }}></div>
+                            <div className="color__item" key={color.colorId}>
+                                <input className="color__input" id={color.colorId} value={color.colorId} onChange={toggleColor} type="checkbox"/>
+                                <label className="color__label" htmlFor={color.colorId}>{color.colorName}</label>
+                                <div className="color__square" style={{backgroundColor: color.colorHex, height: "40px", width: "40px", display: "inline-block", boxShadow: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)" }}></div>
                             </div>
                         ))}
                     </div>
-                    <div>
-                        <button type="button" onClick={addColors}>Add</button>
+                    <div className="color__button-container">
+                        <button className="color__button" type="button" onClick={addColors}>Add Selected</button>
                     </div>
                 </form>
             </div>

@@ -1,0 +1,66 @@
+.color__container {
+    width: 100vw;
+    @include flex(row, nowrap, center, center);
+}
+
+.color__form {
+    @include flex(column, nowrap, center, center);
+    width: calc(100% - 50px);
+    border: 2px solid $thm-blue;
+    background-color: $thm-lightgrey;
+    padding: 10px;
+}
+
+.color__list {
+    width: 90%;
+    @include bp($thm-bp-sml){
+        width: 60%
+    } @include bp($thm-bp-med){
+        width: 50%
+    } @include bp($thm-bp-lrg){
+        width: 40%
+    }
+}
+
+.color__item {
+    @include flex(row, nowrap, space-between, center);
+    font-size: $thm-font-lrg;
+    padding: 5px;
+    border-bottom: 1px solid $thm-grey;
+}
+
+.color__input {
+    height: 25px;
+    width: 25px;
+    margin: 0px;
+}
+
+.color__label {
+    margin-bottom: 0px;
+}
+
+.color__button-container {
+    @include flex(row, nowrap, center, center);
+}
+
+.color__button {
+    text-decoration: none;
+    color: $thm-blue;
+    border: 2px solid $thm-blue;
+    padding: 5px 15px 5px 15px;
+    border-radius: 5px;
+    font-size: $thm-font-medlrg;
+    background-color: $thm-white;
+    text-align: center;
+    margin: 10px;
+    @include bp($thm-bp-xlrg) {
+        font-size: $thm-font-lrg;
+    }
+    &:hover {
+        color: $thm-grey;
+        background-color: $thm-lightgrey;
+        border-color: $thm-grey;
+    } &:active {
+        background-color: $thm-lightblue;
+    }
+}
