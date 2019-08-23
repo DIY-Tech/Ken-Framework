@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { AppContext } from '../../../../App';
+import Service from '../../../../services/service';
 
 function AddDistributor() {
     const [email, setEmail] = useState('');
@@ -10,7 +11,7 @@ function AddDistributor() {
 
     function registerDistributor() {
         if(email !== '' && password !== '' && password === confirmPassword ) {
-            fetch('http://site1/server.php', {
+            fetch(Service.domain, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -31,15 +32,12 @@ function AddDistributor() {
             .then(res => res.json())
             .then(res => {
                 dispatch({type: 'updateNotification', data: {open: true, status: res.status, message: res.message}});
-                console.log(res.message);
-                if(res.status === "success") {
-                }
             });
         }
     }
 
     function updateDistributor() {
-            fetch('http://site1/server.php', {
+            fetch(Service.domain, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -60,9 +58,7 @@ function AddDistributor() {
             })
             .then(res => res.json())
             .then(res => {
-                if(res.status === "success") {
-                    console.log(res.message);
-                }
+                dispatch({type: 'updateNotification', data: {open: true, status: res.status, message: res.message}});
             });
     }
 

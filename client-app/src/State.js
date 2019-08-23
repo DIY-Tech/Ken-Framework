@@ -1,12 +1,12 @@
 let State = {
     accountData: {
-        isLoggedIn: false,
-        accountCreated: "2019-08-20 14:29:31",
-        accountDiscount: ".25",
+        isLoggedIn: true,
+        accountCreated: "2019-08-22 14:35:24",
+        accountDiscount: ".20",
         accountEmail: "matthew@test.com",
-        accountId: "1",
+        accountId: "33",
         accountType: "admin",
-        apiToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMSIsImV4cCI6MTU2Njk0Mjc3MCwiaXNzIjoiZmxhdHJhdGVtZXRhbCIsImlhdCI6MTU2NjMzNzk3MH0.urmA3TsteF273zgwEDbiBnQvU12sh9q73eqBiVnR3o8"
+        apiToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMzMiLCJleHAiOjE1NjcxNzM5MTAsImlzcyI6ImZsYXRyYXRlbWV0YWwiLCJpYXQiOjE1NjY1NjkxMTB9._pnY9C3jqsuqlueiaFX17FTlqyCT_atM2Nmr7IWLJDA"
     },
     products: [],
     materials: [],

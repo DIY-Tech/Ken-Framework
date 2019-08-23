@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useReducer, useContext } from 'react';
 import {AppContext} from '../../../../App';
 import { Link, Redirect } from 'react-router-dom';
+import Service from '../../../../services/service';
 
 function imageReducer(state, action) {
     switch (action.type) {
@@ -13,9 +14,9 @@ function imageReducer(state, action) {
 
 function ProductImage() {
 
-    const [previewImages, dispatch] = useReducer(imageReducer, []);
+    const [previewImages, imgDispatch] = useReducer(imageReducer, []);
     const [images, setImages] = useState([]);
-    const {accountData, currentProduct} = useContext(AppContext);
+    const {accountData, currentProduct, dispatch} = useContext(AppContext);
 
     function dragEnter(e) {
         console.log("enter")
@@ -53,7 +54,7 @@ function ProductImage() {
 
     function addImageToPreview(img) {
         console.log(previewImages);
-        dispatch({ type: 'addImage', data: img });
+        imgDispatch({ type: 'addImage', data: img });
     }
 
     function handleFiles(files) {
@@ -72,11 +73,18 @@ function ProductImage() {
             imageData.append('fileUpload', image);
             imageData.append('apiToken', accountData.apiToken);
             imageData.append('accountType', accountData.accountType);
-            fetch('http://site1/server.php', {method: 'POST', body: imageData,})
+            fetch(Service.domain, {method: 'POST', body: imageData,})
             .then(res => res.json())
             .then(res => {
                 if (res.status === "success") {
-                    console.log(res.message);
+                    dispatch({
+                        type: "updateNotification",
+                        data: {
+                            open: true,
+                            status: res.status,
+                            message: res.message
+                        }
+                    })
                 }
             })
         })

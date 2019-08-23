@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
 import { AppContext } from '../../../../App';
+import Service from '../../../../services/service';
 
 function ViewDistributors({history}) {
     const { accountData, dispatch } = useContext(AppContext);
@@ -11,7 +12,7 @@ function ViewDistributors({history}) {
 
     function getAccounts() {
         console.log('getting accounts');
-        fetch('http://site1/server.php?controller=account&action=getAll&apiToken=' + accountData.apiToken + "&accountType=" + accountData.accountType)
+        fetch(Service.domain + '?controller=account&action=getAll&apiToken=' + accountData.apiToken + "&accountType=" + accountData.accountType)
         .then(res => res.json())
         .then(res => {
             setAccounts(res.data);
@@ -19,7 +20,7 @@ function ViewDistributors({history}) {
     }
 
     function deleteAccount(e) {
-        fetch("http://site1/server.php", {
+        fetch(Service.domain, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",

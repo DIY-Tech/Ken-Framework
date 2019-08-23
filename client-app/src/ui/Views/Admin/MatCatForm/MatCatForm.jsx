@@ -1,6 +1,9 @@
 import React, {useContext, useState} from 'react';
+import { AppContext } from '../../../../App';
+import Service from '../../../../services/service';
 
 function MatCatForm() {
+    const {dispatch} = useContext(AppContext);
     const [materialName, setMaterialName] = useState('');
     const [categoryName, setCategoryName] = useState('');
     const [colorName, setColorName] = useState('');
@@ -8,7 +11,7 @@ function MatCatForm() {
 
     function AddMaterial() {
         if(materialName !== "") {
-            fetch('http://site1/server.php', {
+            fetch(Service.domain, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -24,8 +27,9 @@ function MatCatForm() {
             })
             .then(res => res.json())
             .then(res => {
+                dispatch({type: 'updateNotification', data: {open: true, status: res.status, message: res.message}});
                 if(res.status === "success") {
-                    setMaterialName('');
+                    materialName('');
                 }
             })
         }
@@ -33,7 +37,7 @@ function MatCatForm() {
 
     function AddCategory() {
         if(categoryName !== "") {
-            fetch('http://site1/server.php', {
+            fetch(Service.domain, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -49,8 +53,9 @@ function MatCatForm() {
             })
             .then(res => res.json())
             .then(res => {
-                if(res.status === "success") {
-                   setCategoryName(''); 
+                dispatch({type: 'updateNotification', data: {open: true, status: res.status, message: res.message}});
+                if(res.status === 'success') {
+                    categoryName('');
                 }
             })
         }
@@ -58,7 +63,7 @@ function MatCatForm() {
 
     function AddColor() {
         if(colorName !== "" && colorHex !== "") {
-            fetch('http://site1/server.php', {
+            fetch(Service.domain, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -75,8 +80,8 @@ function MatCatForm() {
             })
             .then(res => res.json())
             .then(res => {
+                dispatch({type: 'updateNotification', data: {open: true, status: res.status, message: res.message}});
                 if(res.status === "success") {
-                    console.log(res.message);
                     setColorHex('');
                     setColorName('');
                 }

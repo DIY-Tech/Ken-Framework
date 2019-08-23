@@ -1,6 +1,7 @@
 import React, {useState, useContext} from 'react';
 import { AppContext } from '../../../App';
 import { Redirect } from 'react-router-dom';
+import Service from '../../../services/service';
 
 function Login() {
 
@@ -27,7 +28,7 @@ function Login() {
 
     function login() {
         if (validation()) {
-            fetch("http://site1/server.php", {
+            fetch(Service.domain, {
             method:"POST",
             headers: {"Accept":"application/json", "Content-Type":"application/json"},
             body: JSON.stringify({

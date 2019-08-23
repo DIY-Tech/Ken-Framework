@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { AppContext } from '../../../../App';
 import ProductImage from './ProductImage';
 import { Link, Redirect } from 'react-router-dom';
+import Service from '../../../../services/service';
 
 function ProductForm({history}) {
     const { accountData, dispatch } = useContext(AppContext);
@@ -44,7 +45,7 @@ function ProductForm({history}) {
                 e.preventDefault();
                 return;
             }
-        fetch('http://site1/server.php', {
+        fetch(Service.domain, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
